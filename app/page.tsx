@@ -9,12 +9,12 @@ const App = () => {
     if(localStorage.getItem("user")) window.location.href = "/dashboard";
   }, [])
 
-  return <>
+  return <div style={{ background: '#eef1fa' }}>
     <div>
       <NavbarOnboarding/>
       <LoginFormContent/>
     </div>
-  </>
+  </div>
 };
 
 export default App;

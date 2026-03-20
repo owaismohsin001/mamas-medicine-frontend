@@ -4,12 +4,12 @@ import { NavbarOnboarding } from "../../devlinkModified/NavbarOnboarding";
 import { SignupForm } from "../../devlinkModified/SignupForm";
 
 const App = () => {
-  return <>
+  return <div style={{ background: '#eef1fa' }}>
     <div>
       <NavbarOnboarding/>
       <SignupForm/>
     </div>
-  </>
+  </div>
 };
 
 export default App;

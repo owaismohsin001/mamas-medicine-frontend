@@ -231,7 +231,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               >
                 {user ? "Dashboard" : "Log In"}
               </_Builtin.Link>
-              <div
+              {user && <div
                 className={_utils.cx(_styles, "nav-link-6")}
                 onClick={() => {
                   localStorage.clear()
@@ -239,7 +239,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                 }}
               >
                 {"Logout"}
-              </div>
+              </div>}
             </_Builtin.NavbarMenu>
             <_Builtin.NavbarButton
               className={_utils.cx(_styles, "nav_menu-bnt-2")}
