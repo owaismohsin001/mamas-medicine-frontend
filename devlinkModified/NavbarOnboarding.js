@@ -43,7 +43,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               className={_utils.cx(_styles, "brand")}
               aria-label="Mama’s Medicine — home page"
               options={{
-                href: "/",
+                href: "https://mamasmedicine.webflow.io/",
                 preload: "none",
               }}
             >
