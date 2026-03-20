@@ -310,11 +310,31 @@ export function SignupForm({
                     const fullName = document.querySelector('[data-ms-member=full-name]').value
                     const password = document.querySelector('[data-ms-member=password]').value
                     const confirmPassword = document.querySelector('[data-name="Confirm Passowrd"]').value
-                    if(!email) return alert("Email is required")
-                    if(!fullName) return alert("Full name is required")
-                    if(!password) return alert("Password is required")
-                    if(!confirmPassword) return alert("Password confirmation is required")
-                    if(password !== confirmPassword) return alert("Passwords do not match")
+                    if(!email) return swal({
+                      title: "Error",
+                      text: "Email is required",
+                      icon: "error",
+                    })
+                    if(!fullName) return swal({
+                      title: "Error",
+                      text: "Full name is required",
+                      icon: "error",
+                    })
+                    if(!password) return swal({
+                      title: "Error",
+                      text: "Password is required",
+                      icon: "error",
+                    })
+                    if(!confirmPassword) return swal({
+                      title: "Error",
+                      text: "Confirm password is required",
+                      icon: "error",
+                    })
+                    if(password !== confirmPassword) return swal({
+                      title: "Error",
+                      text: "Passwords do not match",
+                      icon: "error",
+                    })
 
                     try {
                             const { authToken } = await request({
@@ -340,7 +360,11 @@ export function SignupForm({
                             window.location.href = "/dashboard"
                         } catch(e) {
                             const err = e
-                            alert(err?.message)
+                            swal({
+                                title: "Error",
+                                text: err?.message,
+                                icon: "error",
+                            })
                         }
                 }}></button>
                 <div

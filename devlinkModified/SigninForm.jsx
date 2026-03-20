@@ -4,6 +4,7 @@ import * as _Builtin from "../devlink/_Builtin";
 import * as _utils from "../devlink/utils";
 import _styles from "../devlink/LoginFormContent.module.css";
 import { request } from "./env";
+import swal from 'sweetalert';
 
 export function LoginFormContent({
   as: _Component = _Builtin.Block,
@@ -248,8 +249,16 @@ export function LoginFormContent({
                     ev.preventDefault()
                     const email = document.querySelector('[data-ms-member=email').value
                     const password = document.querySelector('[data-ms-member=password]').value
-                    if(!email) return alert("Email is required")
-                    if(!password) return alert("Password is required")
+                    if(!email) return swal({
+                      title: "Error",
+                      text: "Email is required",
+                      icon: "error",
+                    })
+                    if(!password) return swal({
+                      title: "Error",
+                      text: "Password is required",
+                      icon: "error",
+                    })
 
                     try {
                             const { authToken } = await request({
@@ -274,7 +283,11 @@ export function LoginFormContent({
                             window.location.href = "/dashboard"
                         } catch(e) {
                             const err = e
-                            alert(err?.message)
+                            return swal({
+                              title: "Error",
+                              text: err?.message,
+                              icon: "error",
+                            })
                         }
                 }}></button>
                 <div

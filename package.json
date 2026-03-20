@@ -15,7 +15,8 @@
     "react-dom": "19.2.4",
     "react-google-places-autocomplete": "^4.1.0",
     "react-markdown": "^10.1.0",
-    "react-spinners": "^0.17.0"
+    "react-spinners": "^0.17.0",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

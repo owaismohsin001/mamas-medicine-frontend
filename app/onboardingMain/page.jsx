@@ -18,6 +18,7 @@ import { OnboardingFinal } from "../../devlinkModified/OnboardingFinal";
 import { OnboardingComplete } from "../../devlinkModified/OnboardingComplete";
 
 import { request } from "../../devlinkModified/env";
+import swal from 'sweetalert';
 
 function mapToOnboardingPayload(data) {
   return {
@@ -52,18 +53,18 @@ function mapToOnboardingPayload(data) {
 
 const validate = (step, values) => {
   const data = mapToOnboardingPayload(values)
-  if(step == 1) {
-    if(!data?.username) return "Your name is required"
-    if(!data?.parentPronouns) return "Your pronouns are required"
-    if(!data?.childname) return "Your child's name is required"
-    if(!data?.childPronouns) return "Your child's pronouns are required"
+  if (step == 1) {
+    if (!data?.username) return "Your name is required"
+    if (!data?.parentPronouns) return "Your pronouns are required"
+    if (!data?.childname) return "Your child's name is required"
+    if (!data?.childPronouns) return "Your child's pronouns are required"
   }
-  if(step == 2) {
-    if(!data?.user_dob) return "Your date of birth are required"
-    if(!data?.child_birth_place_id) return "Your birthplace are required"
+  if (step == 2) {
+    if (!data?.user_dob) return "Your date of birth are required"
+    if (!data?.child_birth_place_id) return "Your birthplace are required"
 
-    if(!data?.child_dob) return "Your child's date of birth are required"
-    if(!data?.child_birth_place_id) return "Your child's birthplace are required"
+    if (!data?.child_dob) return "Your child's date of birth are required"
+    if (!data?.child_birth_place_id) return "Your child's birthplace are required"
   }
 }
 
@@ -115,11 +116,18 @@ const App = () => {
           body: payload
         })
         if (status == "ready") {
-          alert("Your insight is ready")
-          window.location.href = "/dashboard"
+          swal({
+            title: "Success",
+            text: "Your insight is ready",
+            icon: "success",
+          }).then(() => window.location.href = "/dashboard")
         }
       } catch (e) {
-        alert(e?.message)
+        swal({
+          title: "Error",
+          text: err?.message,
+          icon: "error",
+        })
       }
     }
   }
@@ -151,8 +159,12 @@ const App = () => {
               ...selects
             }
             const error = validate(step, newResults)
-            if(error) {
-              alert(error)
+            if (error) {
+              swal({
+                title: "Error",
+                text: error,
+                icon: "error",
+              })
               return
             }
             setResults(newResults)
