@@ -64,7 +64,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               <_Builtin.NavbarLink
                 className={_utils.cx(_styles, "nav-link-7")}
                 options={{
-                  href: "https://mamasmedicine.co/about",
+                  href: "https://mamasmedicine.webflow.io/about",
                 }}
               >
                 {"About"}
@@ -100,7 +100,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "https://mamasmedicine.co/soul-sighted",
+                      href: "https://mamasmedicine.webflow.io/soul-sighted",
                     }}
                   >
                     {"What is Soul Sighted?"}
@@ -108,7 +108,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "https://mamasmedicine.co/parent-child-relationship",
+                      href: "https://mamasmedicine.webflow.io/parent-child-relationship",
                     }}
                   >
                     {"Your Vibes"}
@@ -212,7 +212,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               <_Builtin.NavbarLink
                 className={_utils.cx(_styles, "nav-link-6")}
                 options={{
-                  href: "https://mamasmedicine.co/faqs",
+                  href: "https://mamasmedicine.webflow.io/faqs",
                 }}
               >
                 {"FAQ's"}
