@@ -1,0 +1,243 @@
+"use client";
+import React from "react";
+import * as _Builtin from "./_Builtin";
+import * as _utils from "./utils";
+import _styles from "./OnboardingNames.module.css";
+
+export function OnboardingNames({
+  as: _Component = _Builtin.Block,
+  text1 = "We use names to personalise your insight - nothing more.",
+
+  link1 = {
+    href: "#",
+  },
+
+  image = "https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/6968ac26a420d9f418e3cfa1_left_16025619.png",
+  text2 = "Back",
+
+  link2 = {
+    href: "#",
+  },
+
+  text3 = "Next",
+}) {
+  return (
+    <_Component
+      className={_utils.cx(_styles, "padding-global", "padding-section-small")}
+      tag="div"
+    >
+      <_Builtin.Block
+        className={_utils.cx(_styles, "container-large-5")}
+        tag="div"
+      >
+        <_Builtin.Block
+          className={_utils.cx(_styles, "onboarding_names-wrapper")}
+          tag="div"
+        >
+          <_Builtin.Block
+            className={_utils.cx(_styles, "onbording_content", "names")}
+            tag="div"
+          >
+            <_Builtin.Block
+              className={_utils.cx(_styles, "names_form-wrapper")}
+              tag="div"
+            >
+              <_Builtin.FormWrapper
+                className={_utils.cx(_styles, "form-block")}
+              >
+                <_Builtin.FormForm
+                  className={_utils.cx(_styles, "names_form")}
+                  name="wf-form-parent-child-names"
+                  data-name="parent child names"
+                  redirect="/"
+                  data-redirect="/"
+                  method="get"
+                  id="wf-form-parent-child-names"
+                >
+                  <_Builtin.FormBlockLabel
+                    className={_utils.cx(_styles, "names_child-heading")}
+                    htmlFor="parent-name"
+                  >
+                    {"1. Your name"}
+                  </_Builtin.FormBlockLabel>
+                  <_Builtin.Block
+                    className={_utils.cx(_styles, "names_form-subtitle")}
+                    tag="div"
+                  >
+                    {"Pre-filled if possible"}
+                  </_Builtin.Block>
+                  <_Builtin.FormTextInput
+                    className={_utils.cx(_styles, "first_mame-fild")}
+                    name="parent-name"
+                    maxLength={256}
+                    data-name="parent name"
+                    placeholder="Your name"
+                    disabled={false}
+                    type="text"
+                    required={true}
+                    autoFocus={false}
+                    id="parent_name"
+                  />
+                  <_Builtin.FormBlockLabel
+                    className={_utils.cx(_styles, "names_child-heading")}
+                    htmlFor="parent_pronouns"
+                  >
+                    {"Your Pronoun"}
+                  </_Builtin.FormBlockLabel>
+                  <_Builtin.FormSelect
+                    className={_utils.cx(_styles, "drop_dowm")}
+                    name="Parent-s-Pronouns"
+                    data-name="Parent's Pronouns"
+                    required={false}
+                    multiple={false}
+                    id="parent_pronouns"
+                    options={[
+                      {
+                        t: "Choose from dropdown",
+                        v: "",
+                      },
+                      {
+                        t: "he/him",
+                        v: "he/him",
+                      },
+                      {
+                        t: "she/her",
+                        v: "she/her",
+                      },
+                      {
+                        t: "they/them",
+                        v: "they/them",
+                      },
+                    ]}
+                  />
+                  <_Builtin.FormBlockLabel
+                    className={_utils.cx(_styles, "names_child-heading")}
+                    htmlFor="child-name"
+                  >
+                    {"2. Your child’s name"}
+                  </_Builtin.FormBlockLabel>
+                  <_Builtin.FormTextInput
+                    className={_utils.cx(_styles, "text-field-2")}
+                    name="child-name"
+                    maxLength={256}
+                    data-name="child name"
+                    placeholder="Your child’s name"
+                    disabled={false}
+                    type="text"
+                    required={true}
+                    autoFocus={false}
+                    id="child_name"
+                  />
+                  <_Builtin.FormBlockLabel
+                    className={_utils.cx(_styles, "names_child-heading")}
+                    htmlFor="child_pronouns"
+                  >
+                    {"Child Pronoun"}
+                  </_Builtin.FormBlockLabel>
+                  <_Builtin.FormSelect
+                    className={_utils.cx(_styles, "drop_dowm")}
+                    name="Child-s-Pronoun"
+                    data-name="Child's Pronoun"
+                    required={false}
+                    multiple={false}
+                    id="child_pronouns"
+                    options={[
+                      {
+                        t: "Choose from dropdown",
+                        v: "",
+                      },
+                      {
+                        t: "she/her",
+                        v: "she/her",
+                      },
+                      {
+                        t: "he/him",
+                        v: "he/him",
+                      },
+                      {
+                        t: "they/them",
+                        v: "they/them",
+                      },
+                    ]}
+                  />
+                  <_Builtin.FormButton
+                    className={_utils.cx(_styles, "submit-button")}
+                    type="submit"
+                    value="Submit"
+                    data-wait="Please wait..."
+                  />
+                </_Builtin.FormForm>
+                <_Builtin.FormSuccessMessage>
+                  <_Builtin.Block tag="div">
+                    {"Thank you! Your submission has been received!"}
+                  </_Builtin.Block>
+                </_Builtin.FormSuccessMessage>
+                <_Builtin.FormErrorMessage>
+                  <_Builtin.Block tag="div">
+                    {"Oops! Something went wrong while submitting the form."}
+                  </_Builtin.Block>
+                </_Builtin.FormErrorMessage>
+              </_Builtin.FormWrapper>
+            </_Builtin.Block>
+            <_Builtin.Block
+              className={_utils.cx(_styles, "margin-bottom", "margin-custom3")}
+              tag="div"
+            >
+              <_Builtin.Paragraph
+                className={_utils.cx(
+                  _styles,
+                  "paragraph",
+                  "text-color-primary",
+                  "max-widht10"
+                )}
+              >
+                {text1}
+              </_Builtin.Paragraph>
+            </_Builtin.Block>
+          </_Builtin.Block>
+          <_Builtin.Block
+            className={_utils.cx(_styles, "onbording_names-navigation")}
+            tag="div"
+          >
+            <_Builtin.Link
+              className={_utils.cx(_styles, "back_bnt")}
+              button={false}
+              id="onboarding_names_back_btn"
+              block="inline"
+              options={link1}
+            >
+              <_Builtin.Block
+                className={_utils.cx(_styles, "back_bnt-icon")}
+                tag="div"
+              >
+                <_Builtin.Image
+                  className={_utils.cx(_styles, "icon_img")}
+                  width="auto"
+                  height="auto"
+                  loading="lazy"
+                  alt=""
+                  src={image}
+                />
+              </_Builtin.Block>
+              <_Builtin.Block
+                className={_utils.cx(_styles, "back_text")}
+                tag="div"
+              >
+                {text2}
+              </_Builtin.Block>
+            </_Builtin.Link>
+            <_Builtin.Link
+              className={_utils.cx(_styles, "btn-onboarding", "onbord")}
+              button={true}
+              id="onboarding_names_btn"
+              block=""
+              options={link2}
+            >
+              {text3}
+            </_Builtin.Link>
+          </_Builtin.Block>
+        </_Builtin.Block>
+      </_Builtin.Block>
+    </_Component>
+  );
+}

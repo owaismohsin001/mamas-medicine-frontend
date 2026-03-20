@@ -1,0 +1,33 @@
+.divider_text-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider_text-wrapper.background-color-secondary {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  line-height: 100%;
+}
+
+.background-color-secondary {
+  background-color: #fcbd94;
+}
+
+.div-block-6 {
+  padding: 1rem;
+  border: 1px solid #333;
+  border-radius: 1.5rem;
+}
+
+.divider_text-2 {
+  font-family: Buffalo;
+  font-size: 6rem;
+  line-height: 100%;
+}
+
+@media screen and (max-width: 479px) {
+  .divider_text-2 {
+    font-size: 2.5rem;
+  }
+}

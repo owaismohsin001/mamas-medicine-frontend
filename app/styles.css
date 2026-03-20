@@ -1,0 +1,158 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-script {
+  font-family: "Brush Script MT", cursive;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.logo-bold {
+  font-weight: 600;
+  color: #f4b183;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+/* Button */
+.login-btn {
+  background-color: #f4b183;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.login-btn:hover {
+  opacity: 0.85;
+}
+
+.form-button {
+  color: #0b1730cc;
+  background-color: #0000;
+  border-color: #0b1730cc;
+  font-family: Poppins;
+  font-style: normal;
+}
+
+.form-button {
+  -webkit-appearance: button;
+}
+
+.form-button {
+  background-color: var(--coral);
+  color: #333;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: .8rem;
+  height: 5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-family: Poppins;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.575rem;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  line-height: inherit;
+  cursor: pointer;
+  background-color: #fcbd97;
+  border: 0;
+  padding: 9px 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.form-button:hover {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.onboarding-patch {
+  background-color: #f6f4f2;
+}
+
+.onboarding-patch div:has(> p) {
+  margin: 0 !important;
+  margin-bottom: 3rem !important;
+}
+
+.onboarding-patch .content div:has(> h2) {
+  margin: 0 !important;
+  margin-bottom: 8rem !important;
+}
+
+.lottie-bg {
+  position: absolute !important;
+  /* top: 50%; */
+  left: 50%;
+  /* transform: translate(-50%, -50%) scale(1.0); */
+  width: 100%;
+  /* height: 100%; */
+  z-index: 0;
+  overflow-y: clip;
+}
+
+.lottie-bg {
+  position: absolute;
+  /* top: -50vh !important; */
+  margin-top: -70vh;
+  inset: 0; /* top:0 left:0 right:0 bottom:0 */
+  z-index: 0;
+  pointer-events: none; /* so it doesn’t block clicks */
+}
+
+/* .lottie-bg > div {
+  width: 80vw;
+  height: auto;
+  max-width: none;
+} */
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
