@@ -103,7 +103,7 @@ const App = () => {
               pronouns: mapped.childPronouns
             }
           })
-          child_id = data?.id
+          child_id = data?.child_id
         }
 
         const payload = {
