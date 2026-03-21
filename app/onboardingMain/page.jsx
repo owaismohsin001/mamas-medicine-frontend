@@ -86,20 +86,26 @@ const App = () => {
       try {
         const token = localStorage.getItem("authToken")
         const mapped = mapToOnboardingPayload(results)
-        const { child_id } = await request({
-          method: "POST",
-          endpoint: "add_children",
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-          body: {
-            name: mapped.childname,
-            dob: mapped.child_dob,
-            place_of_birth: results['child'],
-            place_of_birth_id: mapped.child_birth_place_id,
-            pronouns: mapped.childPronouns
-          }
-        })
+        let child_id = window.location.href.split("?child_id=")[1]
+
+        if (!child_id) {
+          const data = await request({
+            method: "POST",
+            endpoint: "add_children",
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+            body: {
+              name: mapped.childname,
+              dob: mapped.child_dob,
+              place_of_birth: results['child'],
+              place_of_birth_id: mapped.child_birth_place_id,
+              pronouns: mapped.childPronouns
+            }
+          })
+          child_id = data?.id
+        }
+
         const payload = {
           child_id,
           journey_id: "fff90478-924f-4ec7-95a1-68b5549a0ec9",

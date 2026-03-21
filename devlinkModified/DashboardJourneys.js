@@ -5,6 +5,7 @@ import * as _utils from "../devlink/utils";
 import _styles from "../devlink/DashboardJourneys.module.css";
 import ReactMarkdown from "react-markdown";
 import "../app/modal.css"
+import { request } from "./env";
 
 export default function InsightModal({ onClose, insight }) {
   console.log(insight)
@@ -42,6 +43,7 @@ export function DashboardJourneys({
 
   item = null,
   nOfChildren = 0,
+  setLoading,
 
   link1 = {
     href: "#",
@@ -76,7 +78,7 @@ export function DashboardJourneys({
 
   return <>
     {
-      insightModal && <InsightModal insight={insightModal} onClose={() => setInsightModal(null)}/>
+      insightModal && <InsightModal insight={insightModal} onClose={() => setInsightModal(null)} />
     }
     <_Component
       className={_utils.cx(
@@ -121,26 +123,61 @@ export function DashboardJourneys({
                   )}
                   tag="div"
                 >
-                  <_Builtin.Link
+                  <div
                     className={_utils.cx(_styles, "journey_btn", "is-begin")}
                     button={false}
                     block="inline"
                     options={link1}
-                    style={{ background: item?.insights?.length ? "white" : undefined }}
-                    onClick={() => {
-                      if(item?.insights?.length) {
-                        if(item?.insights?.[0]?.status == "ready") setInsightModal(item?.insights?.[0])
+                    style={{ background: item?.insights?.length || !item?.purchases?.length ? "white" : undefined }}
+                    onClick={async () => {
+                      try {
+                        console.log(item)
+                        if (item?.insights?.length) {
+                          if (item?.insights?.[0]?.status == "ready") setInsightModal(item?.insights?.[0])
+                        }
+                        else if (!item?.purchases?.length) {
+                          setLoading(true)
+                          const { url } = await request({
+                            method: "POST",
+                            endpoint: "create_checkout_session",
+                            headers: {
+                              authorization: `Bearer ${localStorage.getItem("authToken")}`
+                            },
+                            body: {
+                              "client_reference_id": `${item.child?.id}`,
+                              "success_url": "https://mamas-medicine-frontend.vercel.app/onboardingMain?child_id=" + item.child?.id,
+                              "cancel_url": "https://mamas-medicine-frontend.vercel.app?payment_failed",
+                              "line_items": [
+                                {
+                                  "price": "price_1TDByXAVjODwvEQhHmOZrZoZ",
+                                  "quantity": 1
+                                }
+                              ]
+                            }
+                          })
+                          window.location.href = url
+                        }
+                        else window.location.href = "/onboardingMain" + (nOfChildren > 1 ? `?child_id=${item.child?.id}` : "")
+                      } catch (e) {
+                        setLoading(false)
+                        swal({
+                          title: "Error",
+                          text: e?.message || "Something went wrong",
+                          icon: "error",
+                        })
                       }
-                      else window.location.href = "/onboardingMain"
                     }}
                   >
                     <_Builtin.Block
                       className={_utils.cx(_styles, "journey_btn-text")}
                       tag="div"
                     >
-                      {item?.insights?.length ? (item?.insights?.[0]?.status == "ready" ? "VIEW" : "...") : "BEGIN"}
+                      {item?.insights?.length ?
+                        (item?.insights?.[0]?.status == "ready" ? "VIEW" : "...") :
+                        (item?.purchases?.length ? "BEGIN" : "PURCHASE")
+                      }
                     </_Builtin.Block>
-                  </_Builtin.Link>
+                  </div>
                   <_Builtin.Block
                     className={_utils.cx(_styles, "img_overlay")}
                     tag="div"

@@ -21,19 +21,23 @@ const App = () => {
 
     const [selectedChild, setSelectedChild] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [refresh, setRefresh] = useState(false)
+
+    const refreshData = () => setRefresh(!refresh)
 
     useEffect(() => {
         const f = async () => {
-            const { children, insights } = await request({
+            const { children, insights, purchases } = await request({
                 method: "GET",
                 endpoint: "/get_children",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("authToken")}`
                 }
             })
-            const childrenObj: Record<string, { child: any; insights: any[] }> = {}
-            for(const child of children) childrenObj[child?.id] = { child, insights: [] }
+            const childrenObj: Record<string, { child: any; insights: any[], purchases: any[] }> = {}
+            for(const child of children) childrenObj[child?.id] = { child, insights: [], purchases: [] }
             for(const insight of insights) childrenObj[insight?.child_id]?.insights?.push?.(insight)
+            for(const purchase of purchases) childrenObj[purchase?.child_id]?.purchases?.push?.(purchase)
 
             const firstChild = childrenObj[Object.keys(childrenObj)[0]]
             // @ts-ignore
@@ -46,7 +50,7 @@ const App = () => {
 
         // const i = setInterval(f, 5_000)
         // return () => clearInterval(i)
-    }, [])
+    }, [refresh])
 
     if(loading) return <>
         <NavbarOnboarding />
@@ -63,14 +67,14 @@ const App = () => {
             {
                 nOfChildren > 0 && <>
                     <DashboardYourFamily/>
-                    <DashboardChildListing family={children} selectedChild={selectedChild} setSelectedChild={setSelectedChild}/>
-                    <DashboardChildJourney child={children[selectedChild]?.child}/>
+                    <DashboardChildListing family={children} setLoading={setLoading} refreshData={refreshData} selectedChild={selectedChild} setSelectedChild={setSelectedChild}/>
+                    <DashboardChildJourney setLoading={setLoading} child={children[selectedChild]?.child}/>
                 </>
             }
             {
                 nOfChildren == 0 && <DashboardDefaultJourneys/>
             }
-            <DashboardJourneys item={children?.[selectedChild]} nOfChildren={nOfChildren}/>
+            <DashboardJourneys setLoading={setLoading} item={children?.[selectedChild]} nOfChildren={nOfChildren}/>
             <Footer />
         </div>
     </>
