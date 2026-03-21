@@ -235,6 +235,7 @@ export function DashboardChildListing({
               onClick={() => {
                 console.log("setSelectedChild(child?.id)", child)
                 setSelectedChild(child?.id)
+                localStorage.setItem('selectedChild', child?.id)
               }}
               className={_utils.cx(_styles, "family_child", selectedChild == child?.id ? "is-active" : "")}
               tag="div"

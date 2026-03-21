@@ -39,7 +39,8 @@ const App = () => {
             for(const insight of insights) childrenObj[insight?.child_id]?.insights?.push?.(insight)
             for(const purchase of purchases) childrenObj[purchase?.child_id]?.purchases?.push?.(purchase)
 
-            const firstChild = childrenObj[Object.keys(childrenObj)[0]]
+            const selectedChildId = localStorage.getItem('selectedChild')
+            const firstChild = selectedChildId ? (childrenObj[selectedChildId] || childrenObj[Object.keys(childrenObj)[0]]) : childrenObj[Object.keys(childrenObj)[0]]
             // @ts-ignore
             if(firstChild && selectedChild === null) setSelectedChild(firstChild?.child?.id)
 
