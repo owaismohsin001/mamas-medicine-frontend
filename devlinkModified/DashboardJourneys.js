@@ -157,7 +157,7 @@ export function DashboardJourneys({
                           })
                           window.location.href = url
                         }
-                        else window.location.href = "/onboardingMain" + (nOfChildren > 1 ? `?child_id=${item.child?.id}` : "")
+                        else window.location.href = `/onboardingMain?child_id=${item.child?.id}`
                       } catch (e) {
                         setLoading(false)
                         swal({
