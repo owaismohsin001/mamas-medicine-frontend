@@ -8,6 +8,7 @@ import { request } from "./env"
 
 export function SignupForm({
   as: _Component = _Builtin.Block,
+  email = "",
   text1 = "Welcome",
   text2 = "Here you'll find all your personalised parenting insights in one place.",
 
