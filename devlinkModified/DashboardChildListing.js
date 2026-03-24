@@ -74,10 +74,6 @@ function PlacesAutocomplete({ name, form, setForm }) {
 function AddChildModal({ isOpen, onClose, onSave }) {
   const [form, setForm] = useState({
     name: "",
-    birthday: "",
-    birthtime: "",
-    birthplace: "",
-    birthplace_place_id: "",
   });
 
   if (!isOpen) return <></>;
@@ -97,15 +93,15 @@ function AddChildModal({ isOpen, onClose, onSave }) {
 
         <h2>Add another child</h2>
 
-        <label>Full Name</label>
+        <label>Child's Name</label>
         <input
           name="name"
-          placeholder="Enter your full name"
+          placeholder="Enter your child's name"
           value={form.name}
           onChange={handleChange}
         />
 
-        <label>Birth Date</label>
+        {/* <label>Birth Date</label>
         <input
           type="date"
           name="birthday"
@@ -135,7 +131,7 @@ function AddChildModal({ isOpen, onClose, onSave }) {
         </select>
 
         <label>Select Your Birthplace</label>
-        <PlacesAutocomplete name="birthplace" form={form} setForm={setForm} />
+        <PlacesAutocomplete name="birthplace" form={form} setForm={setForm} /> */}
 
         <div className="modal-actions">
           <button className="close-btn" onClick={onClose}>
@@ -171,10 +167,10 @@ export function DashboardChildListing({
 
   return <>
     <AddChildModal isOpen={isOpen} onClose={() => setIsOpen(false)} onSave={async (childData) => {
-      if(!childData.name || !childData.birthday || !childData.pronouns || !childData.birthplace) {
+      if(!childData.name) {
         swal({
           title: "Error",
-          text: "Please fill all the fields",
+          text: "Please enter your child's name",
           icon: "error",
         })
         return;
@@ -193,10 +189,10 @@ export function DashboardChildListing({
         },
         body: {
           name: childData.name,
-          dob: childData.birthday + "T" + (childData.birthtime || "00:00"),
-          place_of_birth: childData?.birthplace,
-          place_of_birth_id: childData.birthplace_place_id,
-          pronouns: childData.pronouns
+          // dob: childData.birthday + "T" + (childData.birthtime || "00:00"),
+          // place_of_birth: childData?.birthplace,
+          // place_of_birth_id: childData.birthplace_place_id,
+          // pronouns: childData.pronouns
         }
       })
       refreshData()
