@@ -17,7 +17,7 @@ import "../loader.css"
 
 const App = () => {
     const [children, setChildren] = useState<Record<string, { child: any; insights: any[] }>>({})
-    const nOfChildren = Object.keys(children).length
+    const nOfChildren = Object.entries(children).filter(([_, x]) => !x?.child?.default_child).length
 
     const [selectedChild, setSelectedChild] = useState(null)
     const [loading, setLoading] = useState(true)

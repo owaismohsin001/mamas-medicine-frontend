@@ -128,14 +128,14 @@ export function DashboardJourneys({
                     button={false}
                     block="inline"
                     options={link1}
-                    style={{ background: item?.insights?.length || (!item?.purchases?.length && nOfChildren > 0) ? "white" : undefined }}
+                    style={{ background: item?.insights?.length || !item?.purchases?.length ? "white" : undefined }}
                     onClick={async () => {
                       try {
                         console.log(item)
                         if (item?.insights?.length) {
                           if (item?.insights?.[0]?.status == "ready") setInsightModal(item?.insights?.[0])
                         }
-                        else if (!item?.purchases?.length && nOfChildren > 0) {
+                        else if (!item?.purchases?.length) {
                           setLoading(true)
                           const { url } = await request({
                             method: "POST",
@@ -174,7 +174,7 @@ export function DashboardJourneys({
                     >
                       {item?.insights?.length ?
                         (item?.insights?.[0]?.status == "ready" ? "VIEW" : "...") :
-                        (item?.purchases?.length || nOfChildren == 0 ? "BEGIN" : "PURCHASE")
+                        (item?.purchases?.length ? "BEGIN" : "PURCHASE")
                       }
                     </_Builtin.Block>
                   </div>
