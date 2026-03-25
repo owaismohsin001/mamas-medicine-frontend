@@ -20,7 +20,44 @@ import { OnboardingComplete } from "../../devlinkModified/OnboardingComplete";
 import { request } from "../../devlinkModified/env";
 import swal from 'sweetalert';
 
+const convertStep = (step, key) => {
+  const map = {
+    climate: {
+      "Mostly easy and enjoyable": "mostly_easy_and_enjoyable",
+      "A mix of easy moments and hard moments": "mix_easy_and_hard",
+      "Often intense or emotionally heavy": "intense_or_emotionally_heavy",
+      "Quiet, gentle, and steady": "quiet_gentle_steady",
+      "It changes a lot depending on what's going on": "changes_a_lot",
+      "Distant or hard to connect": "distant_or_hard_to_connect"
+    },
+    activation: {
+      "Yes - they know how to push my buttons": "pushes_my_buttons",
+      "Sometimes, in specific situations": "sometimes",
+      "Rarely - our bond feels steady": "rarely_steady",
+      "It changes over time": "changes_over_time"
+    },
+    closeness: {
+      "Very close and connected": "very_close_connected",
+      "Close, with healthy space": "close_healthy_space",
+      "Close, but I'd love more depth": "close_want_more_depth",
+      "Close but it's charged!": "close_but_charged",
+      "We're re-building closeness as we grow": "rebuilding_closeness"
+    },
+    posture: {
+      "Their safe place": "safe_place",
+      "Their guide": "guide",
+      "Their emotional support": "emotional_support",
+      "Their quiet cheerleader": "quiet_cheerleader",
+      "Their boundary-setter": "boundary_setter",
+      "It changes all the time": "changes_all_the_time"
+    },
+  }
+
+  return map[step][key]
+}
+
 function mapToOnboardingPayload(data) {
+  console.log(data['Step3'])
   return {
     username: data["parent-name"] || "",
     childname: data["child-name"] || "",
@@ -36,10 +73,10 @@ function mapToOnboardingPayload(data) {
     raw_parent_message: data["raw_parent_message"] || null,
 
     // Steps mapping (based on your form)
-    climate: data["Step1"] || null,
-    activation: data["Step2"] || null,
-    closeness: data["Step3"] || null,
-    posture: data["Step4"] || null,
+    climate: convertStep("climate", data["Step1"] || null),
+    activation: convertStep("activation", data["Step2"] || null),
+    closeness: convertStep("closeness", data["Step3"] || null),
+    posture: convertStep("posture", data["Step4"] || null),
 
     // Optional fields (not in your current data)
     summary: null,
@@ -113,21 +150,21 @@ const App = () => {
         }
 
         console.log("final_payload", payload)
-        const { status } = await request({
-          method: "POST",
-          endpoint: "submit_onboarding",
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-          body: payload
-        })
-        if (status == "ready") {
-          swal({
-            title: "Success",
-            text: "Your insight is ready",
-            icon: "success",
-          }).then(() => window.location.href = "/dashboard")
-        }
+        // const { status } = await request({
+        //   method: "POST",
+        //   endpoint: "submit_onboarding",
+        //   headers: {
+        //     'Authorization': `Bearer ${token}`,
+        //   },
+        //   body: payload
+        // })
+        // if (status == "ready") {
+        //   swal({
+        //     title: "Success",
+        //     text: "Your insight is ready",
+        //     icon: "success",
+        //   }).then(() => window.location.href = "/dashboard")
+        // }
       } catch (e) {
         swal({
           title: "Error",
@@ -141,6 +178,7 @@ const App = () => {
 
     if (step == 10) f()
   }, [step])
+f()
 
   useEffect(() => {
     setTimeout(() => {

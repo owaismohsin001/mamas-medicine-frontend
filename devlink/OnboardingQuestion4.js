@@ -259,7 +259,7 @@ export function OnboardingQuestion4({
                   <_Builtin.FormInlineLabel
                     className={_utils.cx(_styles, "reflection_bnt-label")}
                   >
-                    {"We’re re-building closeness as we grow"}
+                    {"We're re-building closeness as we grow"}
                   </_Builtin.FormInlineLabel>
                 </_Builtin.FormRadioWrapper>
               </_Builtin.FormForm>

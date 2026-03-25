@@ -193,7 +193,7 @@ export function OnboardingQuestion4({
                   <_Builtin.FormInlineLabel
                     className={_utils.cx(_styles, "reflection_bnt-label")}
                   >
-                    {"Close, but I’d love more depth"}
+                    {"Close, but I'd love more depth"}
                   </_Builtin.FormInlineLabel>
                 </_Builtin.FormRadioWrapper>
                 <_Builtin.FormRadioWrapper
@@ -226,7 +226,7 @@ export function OnboardingQuestion4({
                   <_Builtin.FormInlineLabel
                     className={_utils.cx(_styles, "reflection_bnt-label")}
                   >
-                    {"Close but it’s charged!"}
+                    {"Close but it's charged!"}
                   </_Builtin.FormInlineLabel>
                 </_Builtin.FormRadioWrapper>
                 <_Builtin.FormRadioWrapper
@@ -259,7 +259,7 @@ export function OnboardingQuestion4({
                   <_Builtin.FormInlineLabel
                     className={_utils.cx(_styles, "reflection_bnt-label")}
                   >
-                    {"We’re re-building closeness as we grow"}
+                    {"We're re-building closeness as we grow"}
                   </_Builtin.FormInlineLabel>
                 </_Builtin.FormRadioWrapper>
               </_Builtin.FormForm>
