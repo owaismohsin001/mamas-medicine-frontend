@@ -150,21 +150,21 @@ const App = () => {
         }
 
         console.log("final_payload", payload)
-        // const { status } = await request({
-        //   method: "POST",
-        //   endpoint: "submit_onboarding",
-        //   headers: {
-        //     'Authorization': `Bearer ${token}`,
-        //   },
-        //   body: payload
-        // })
-        // if (status == "ready") {
-        //   swal({
-        //     title: "Success",
-        //     text: "Your insight is ready",
-        //     icon: "success",
-        //   }).then(() => window.location.href = "/dashboard")
-        // }
+        const { status } = await request({
+          method: "POST",
+          endpoint: "submit_onboarding",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+          body: payload
+        })
+        if (status == "ready") {
+          swal({
+            title: "Success",
+            text: "Your insight is ready",
+            icon: "success",
+          }).then(() => window.location.href = "/dashboard")
+        }
       } catch (e) {
         swal({
           title: "Error",
@@ -178,7 +178,7 @@ const App = () => {
 
     if (step == 10) f()
   }, [step])
-f()
+// f()
 
   useEffect(() => {
     setTimeout(() => {
