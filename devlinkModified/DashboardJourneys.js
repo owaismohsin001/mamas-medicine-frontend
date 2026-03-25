@@ -155,7 +155,7 @@ export function DashboardJourneys({
                               ]
                             }
                           })
-                          // window.location.href = url
+                          window.location.href = url
                         }
                         else window.location.href = `/onboardingMain?child_id=${item.child?.id}`
                       } catch (e) {
