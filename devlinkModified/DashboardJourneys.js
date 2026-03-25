@@ -149,13 +149,13 @@ export function DashboardJourneys({
                               "cancel_url": "https://mamas-medicine-frontend.vercel.app?payment_failed",
                               "line_items": [
                                 {
-                                  "price": "price_1TDByXAVjODwvEQhHmOZrZoZ",
+                                  "price": "price_1TEor2IAr4WiACOqhaJHzCr2",
                                   "quantity": 1
                                 }
                               ]
                             }
                           })
-                          window.location.href = url
+                          // window.location.href = url
                         }
                         else window.location.href = `/onboardingMain?child_id=${item.child?.id}`
                       } catch (e) {

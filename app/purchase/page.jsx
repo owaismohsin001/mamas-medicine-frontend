@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { request } from "../../devlinkModified/env";
 import "./purchase.css"
 import "../loader.css"
@@ -53,23 +53,21 @@ const App = () => {
   const [results, setResults] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const onPurchase = async ({ email }) => {
+  const onPurchase = async ({}) => {
     setLoading(true)
     try {
       const { url } = await request({
         method: "POST",
-        customer_email: email,
         endpoint: "create_checkout_session",
         headers: {
           authorization: `Bearer ${localStorage.getItem("authToken")}`
         },
         body: {
-          "client_reference_id": `${email}`,
           "success_url": "https://mamas-medicine-frontend.vercel.app/signup?purchase_email=" + email,
           "cancel_url": "https://mamas-medicine-frontend.vercel.app?payment_failed",
           "line_items": [
             {
-              "price": "price_1TDByXAVjODwvEQhHmOZrZoZ",
+              "price": "price_1TEor2IAr4WiACOqhaJHzCr2",
               "quantity": 1
             }
           ]
@@ -87,15 +85,15 @@ const App = () => {
     setLoading(false)
   }
 
+  useEffect(() => {
+    onPurchase({})
+  }, [])
+
   if (loading) return <div className="loader-container" style={{ height: '100vh' }}>
     <div className="loader" />
   </div>
 
-  return <>
-    {/* <NavbarOnboarding /> */}
-    <PurchaseModal redirectUrl="/dashboard" onPurchase={onPurchase} />
-    {/* <Footer /> */}
-  </>
+  return <></>
 };
 
 export default App;
