@@ -178,7 +178,7 @@ const App = () => {
 
     if (step == 10) f()
   }, [step])
-// f()
+  // f()
 
   useEffect(() => {
     setTimeout(() => {
@@ -188,19 +188,30 @@ const App = () => {
         if (el.childElementCount === 0) {
           el.onclick = (e) => {
             e.preventDefault()
-            const inputs = Object.fromEntries([...document.getElementsByTagName('input')].map(x => [
-              x?.name,
-              x?.type == "radio" && x?.parentElement?.nodeName == "LABEL" ?
-                x?.parentElement?.querySelector('span')?.innerText :
-                x?.value,
-            ]))
+            const inputs = Object.fromEntries([...document.getElementsByTagName('input')]
+              .map(x => [
+                x?.name,
+                x?.type == "radio" && x?.parentElement?.nodeName == "LABEL" ?
+                  x?.parentElement?.querySelector('span')?.innerText :
+                  x?.value,
+              ]))
+            const radios = Object.fromEntries(
+              [...document.querySelectorAll('input[type="radio"]:checked')]
+                .filter(x => x.parentElement.querySelector('div > div')?.style?.opacity == '1')
+                .map(x => [
+                  x?.name,
+                  x?.type == "radio" && x?.parentElement?.nodeName == "LABEL" ?
+                    x?.parentElement?.querySelector('span')?.innerText :
+                    x?.value,
+                ]))
             const selects = Object.fromEntries([...document.getElementsByTagName('select')].map(x => [x?.name, x?.value]))
             const areas = Object.fromEntries([...document.getElementsByTagName('textarea')].map(x => [x?.name, x?.value]))
             const newResults = {
               ...results,
               ...areas,
               ...inputs,
-              ...selects
+              ...selects,
+              ...radios,
             }
             const error = validate(step, newResults)
             if (error) {
