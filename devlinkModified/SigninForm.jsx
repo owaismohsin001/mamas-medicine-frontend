@@ -46,6 +46,7 @@ export function LoginFormContent({
             >
               <_Builtin.Block
                 className={_utils.cx(_styles, "sign_heading")}
+                style={{ whiteSpace: 'nowrap' }}
                 tag="div"
               >
                 {text1}

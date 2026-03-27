@@ -6,7 +6,7 @@ import _styles from "../devlink/OnboardingQuestions1.module.css";
 
 export function OnboardingQuestions1({
   as: _Component = _Builtin.Block,
-  title = "A few gentle questions to help me tune in",
+  title = "A few gentle questions to help me tune in...",
   text1 = (
     <>
       {"Astrology shows the themes and patterns of a relationship."}
@@ -77,6 +77,7 @@ export function OnboardingQuestions1({
                   "bold",
                   "text-align-center"
                 )}
+                style={{ textAlign: 'left' }} // Override to left-align the text from center
               >
                 {text1}
               </_Builtin.Paragraph>
@@ -93,6 +94,7 @@ export function OnboardingQuestions1({
                   "text-color-primary",
                   "text-align-center"
                 )}
+                style={{ textAlign: 'left' }} // Override to left-align the text from center
               >
                 {text2}
               </_Builtin.Paragraph>
