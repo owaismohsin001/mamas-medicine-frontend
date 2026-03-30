@@ -307,7 +307,8 @@ export function OnboardingPersonal({
                 className={_utils.cx(_styles, "_500ch_max", "text-align-right")}
                 tag="div"
               >
-                {"300 words max."}
+                {/* {"300 words max."}  */}
+                {"500 words max."}
               </_Builtin.Block>
             </_Builtin.Block>
             <_Builtin.FormButton

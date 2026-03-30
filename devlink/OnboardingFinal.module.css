@@ -106,8 +106,10 @@
 
 @media screen and (max-width: 479px) {
   .padding-global.padding-section-large {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    /* padding-top: 5rem;
+    padding-bottom: 5rem; */
+    padding-top: 1.25rem;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -162,6 +164,20 @@
     padding-left: 1rem;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.onboarding_confirmation-wrapper .margin-custom3 {
+  margin-top: 1rem;
+  margin-right: 0rem;
+  margin-bottom: 1.5rem;
+  margin-left: 0rem;
+}
+
+@media screen and (max-width: 479px) {
+  .onboarding_confirmation-wrapper .margin-custom3 {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -474,12 +490,14 @@
 .onbording_heading {
   line-height: 140%;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 479px) {
   .onbording_heading {
     font-size: 2rem;
-    line-height: 140%;
+    line-height: 120%;
+    white-space: nowrap;
   }
 }
 
@@ -798,7 +816,7 @@
 }
 
 .back_bnt {
-  background-color: hsla(208.00000000000003, 82.57%, 57.25%, 0.00);
+  background-color: hsla(208.00000000000003, 82.57%, 57.25%, 0);
 }
 
 .back_bnt-icon {
@@ -811,7 +829,7 @@
 
   border-radius: 100%;
 
-  background-color: hsla(0, 0.00%, 100.00%, 1.00);
+  background-color: hsla(0, 0%, 100%, 1);
 }
 
 @media screen and (max-width: 479px) {
@@ -851,7 +869,7 @@
 
   background-color: #fcbd97;
 
-  transition: border-color 300ms ease,background-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
 
   font-family: Quicksand;
   color: #333;

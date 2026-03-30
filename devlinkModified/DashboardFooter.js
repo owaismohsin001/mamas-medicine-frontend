@@ -81,7 +81,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block="inline"
                 options={{
-                  href: "#https://storyprompt.com/reply/Lslk87m8djFPHZANnIV8",
+                  href: "https://storyprompt.com/reply/Lslk87m8djFPHZANnIV8",
                   target: "_blank",
                 }}
               >
