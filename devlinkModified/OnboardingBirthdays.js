@@ -45,6 +45,10 @@ export default function PlacesAutocomplete({ name }) {
         value={resultPlaceId}
         name={name + "_place_id"}
       />
+      <label htmlFor={name} className={_styles["text-block-5"]}>
+        Select Place of birth
+      </label>
+
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -80,8 +84,8 @@ export default function PlacesAutocomplete({ name }) {
 export function OnboardingBirthdays({
   as: _Component = _Builtin.Block,
   title = "A little about when you both arrived…",
-  image1 = "https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/6968ac26a420d9f418e3cfa1_left_16025619.png",
-  image2 = "https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/6968ac26a420d9f418e3cfa1_left_16025619.png",
+  image1 = "",
+  image2 = "",
 
   link1 = {
     href: "#",
@@ -229,11 +233,12 @@ export function OnboardingBirthdays({
                         id="parent_birth_time"
                       />
                     </_Builtin.Block>
-                    <_Builtin.FormRadioWrapper
+
+                    {/* <_Builtin.FormRadioWrapper
                       className={_utils.cx(_styles, "reflection_radio-fild")}
                       data-w-id="14ee8eff-0908-fa2b-eeab-b102747d3340"
                     >
-                      {/* <_Builtin.Block
+                      <_Builtin.Block
                         className={_utils.cx(_styles, "dot_first")}
                         tag="div"
                       >
@@ -241,8 +246,8 @@ export function OnboardingBirthdays({
                           className={_utils.cx(_styles, "dot_color")}
                           tag="div"
                         />
-                      </_Builtin.Block> */}
-                      {/* <_Builtin.FormRadioInput
+                      </_Builtin.Block>
+                      <_Builtin.FormRadioInput
                         className={_utils.cx(_styles, "reflection_radio-bnt")}
                         type="radio"
                         name="parent_brith_time_idk"
@@ -255,8 +260,8 @@ export function OnboardingBirthdays({
                           name: "parent_brith_time_idk",
                         }}
                         inputType="default"
-                      /> */}
-                      {/* <_Builtin.FormInlineLabel
+                      />
+                      <_Builtin.FormInlineLabel
                         className={_utils.cx(
                           _styles,
                           "reflection_bnt-label",
@@ -264,8 +269,9 @@ export function OnboardingBirthdays({
                         )}
                       >
                         {"I don't know"}
-                      </_Builtin.FormInlineLabel> */}
-                    </_Builtin.FormRadioWrapper>
+                      </_Builtin.FormInlineLabel>
+                    </_Builtin.FormRadioWrapper> */}
+
                     <_Builtin.Block
                       className={_utils.cx(
                         _styles,
@@ -344,7 +350,7 @@ export function OnboardingBirthdays({
                     id="email-form-3"
                   >
                     <_Builtin.Block
-                      className={_utils.cx(_styles, "text-block-6")}
+                      className={_utils.cx(_styles, "text-block-5")}
                       tag="div"
                     >
                       {"Enter child's date of birth"}
@@ -393,11 +399,12 @@ export function OnboardingBirthdays({
                         id="child_birth_time"
                       />
                     </_Builtin.Block>
-                    <_Builtin.FormRadioWrapper
+
+                    {/* <_Builtin.FormRadioWrapper
                       className={_utils.cx(_styles, "reflection_radio-fild")}
                       data-w-id="14ee8eff-0908-fa2b-eeab-b102747d3365"
                     >
-                      {/* <_Builtin.Block
+                      <_Builtin.Block
                         className={_utils.cx(_styles, "dot_first")}
                         tag="div"
                       >
@@ -405,8 +412,8 @@ export function OnboardingBirthdays({
                           className={_utils.cx(_styles, "dot_color")}
                           tag="div"
                         />
-                      </_Builtin.Block> */}
-                      {/* <_Builtin.FormRadioInput
+                      </_Builtin.Block>
+                      <_Builtin.FormRadioInput
                         className={_utils.cx(_styles, "reflection_radio-bnt")}
                         type="radio"
                         name="child_birth_time_idk"
@@ -419,8 +426,8 @@ export function OnboardingBirthdays({
                           name: "child_birth_time_idk",
                         }}
                         inputType="default"
-                      /> */}
-                      {/* <_Builtin.FormInlineLabel
+                      />
+                      <_Builtin.FormInlineLabel
                         className={_utils.cx(
                           _styles,
                           "reflection_bnt-label",
@@ -428,8 +435,9 @@ export function OnboardingBirthdays({
                         )}
                       >
                         {"I don't know"}
-                      </_Builtin.FormInlineLabel> */}
-                    </_Builtin.FormRadioWrapper>
+                      </_Builtin.FormInlineLabel>
+                    </_Builtin.FormRadioWrapper> */}
+
                     <_Builtin.Block
                       className={_utils.cx(_styles, "input_form-wrapper")}
                       tag="div"
@@ -541,14 +549,26 @@ export function OnboardingBirthdays({
                     )}
                     tag="div"
                   >
-                    <_Builtin.Image
+                    {/* <_Builtin.Image
                       className={_utils.cx(_styles, "image-7")}
                       width="auto"
                       height="auto"
                       loading="lazy"
                       alt=""
                       src={image1}
-                    />
+                    /> */}
+                    <svg
+                      className={_utils.cx(_styles, "image-7")}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                   </_Builtin.Block>
                 </_Builtin.Block>
                 <_Builtin.Block
@@ -605,14 +625,18 @@ export function OnboardingBirthdays({
                     )}
                     tag="div"
                   >
-                    <_Builtin.Image
+                    <svg
                       className={_utils.cx(_styles, "image-7")}
-                      width="auto"
-                      height="auto"
-                      loading="lazy"
-                      alt=""
-                      src={image2}
-                    />
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                   </_Builtin.Block>
                 </_Builtin.Block>
               </_Builtin.Block>

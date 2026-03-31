@@ -96,6 +96,7 @@ const App = () => {
       <div>
         <NavbarOnboarding />
         <DashboardWelcome nOfChildren={nOfChildren} />
+
         {nOfChildren > 0 && (
           <>
             <DashboardYourFamily />
@@ -112,6 +113,7 @@ const App = () => {
             />
           </>
         )}
+
         {nOfChildren == 0 && <DashboardDefaultJourneys />}
         <DashboardJourneys
           setLoading={setLoading}

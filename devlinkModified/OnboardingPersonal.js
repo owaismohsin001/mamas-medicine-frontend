@@ -142,10 +142,12 @@ export function OnboardingPersonal({
           <_Builtin.Block
             className={_utils.cx(_styles, "padding-global", "padding-custom1")}
             tag="div"
+            style={{ paddingLeft: 0 }}
           >
             <_Builtin.Block
               className={_utils.cx(_styles, "margin-bottom", "margin-custom2")}
               tag="div"
+              style={{ paddingLeft: 0 }}
             >
               <_Builtin.Paragraph
                 className={_utils.cx(

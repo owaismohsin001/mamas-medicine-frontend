@@ -15,6 +15,12 @@
   margin-top: 0px;
 }
 
+@media screen and (max-width: 767px) {
+  .padding-global-4.padding-section-medium {
+    padding-top: 0rem;
+  }
+}
+
 @media screen and (max-width: 479px) {
   .padding-global-4.padding-section-medium {
     padding-right: 1rem;
@@ -106,9 +112,21 @@
   grid-row-gap: 6.5rem;
 }
 
+@media screen and (max-width: 767px) {
+  .family_child-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+    justify-items: center;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+  }
+}
+
 @media screen and (max-width: 479px) {
   .family_child-wrapper {
     margin-bottom: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
     grid-column-gap: 1.5rem;
     grid-row-gap: 1.5rem;
   }
