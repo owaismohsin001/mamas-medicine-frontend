@@ -46,6 +46,7 @@ export default function PlacesAutocomplete({ name }) {
       >
         Select Place of birth
       </label>
+      
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
