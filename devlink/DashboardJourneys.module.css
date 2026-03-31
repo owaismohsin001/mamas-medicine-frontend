@@ -80,6 +80,15 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .journey_first-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+}
+
 .container-large-6 {
   width: 100%;
   max-width: 90rem;
@@ -101,6 +110,8 @@
 
 @media screen and (max-width: 479px) {
   .journey_first-grid {
+    display: grid;
+    grid-template-columns: 1fr;
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
   }
@@ -116,7 +127,9 @@
 
 @media screen and (max-width: 479px) {
   .journey_card.is-explore {
-    width: 11.5rem;
+    /* width:11.5rem; */
+    width: 100%;
+    max-width: 30rem;
   }
 }
 
@@ -126,7 +139,9 @@
 
 @media screen and (max-width: 479px) {
   .journey_card.is-view {
-    width: 11.5rem;
+    /* width:11.5rem; */
+    width: 100%;
+    max-width: 30rem;
   }
 }
 
@@ -134,9 +149,21 @@
   width: 30rem;
 }
 
+@media screen and (max-width: 767px) {
+  .journey_card,
+  .journey_card.is-explore,
+  .journey_card.is-view,
+  .journey_card.is-begin {
+    width: 100%;
+    max-width: 30rem;
+  }
+}
+
 @media screen and (max-width: 479px) {
   .journey_card.is-begin {
-    width: 11.5rem;
+    /* width:11.5rem; */
+    width: 100%;
+    max-width: 30rem;
   }
 }
 
@@ -265,7 +292,7 @@
   right: 0%;
   bottom: 0%;
 
-  background-color: hsla(0, 0.00%, 100.00%, 0.30);
+  background-color: hsla(0, 0%, 100%, 0.3);
 }
 
 @media screen and (max-width: 479px) {
@@ -276,7 +303,7 @@
     right: 0%;
     bottom: 0%;
 
-    background-color: hsla(0, 0.00%, 100.00%, 0.35);
+    background-color: hsla(0, 0%, 100%, 0.35);
   }
 }
 
@@ -301,7 +328,7 @@
 
   border-radius: 1rem;
 
-  background-color: hsla(0, 0.00%, 100.00%, 1.00);
+  background-color: hsla(0, 0%, 100%, 1);
 
   color: #333;
   text-decoration: none;

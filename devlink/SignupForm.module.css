@@ -47,21 +47,25 @@
 }
 
 .padding-section-medium {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  /* padding-top: 5rem;
+  padding-bottom: 5rem; */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @media screen and (max-width: 991px) {
   .padding-section-medium {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    /* padding-top: 4rem;
+    padding-bottom: 4rem; */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
 @media screen and (max-width: 767px) {
   .padding-section-medium {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -122,6 +126,8 @@
 
 @media screen and (max-width: 767px) {
   .padding-section-small {
+    /* padding-top: 3rem;
+    padding-bottom: 3rem; */
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
@@ -129,9 +135,11 @@
 
 .container-large {
   width: 100%;
-  max-width: 90rem;
+  /* max-width: 90rem; */
+  max-width: 85rem;
   margin-right: auto;
   margin-left: auto;
+  overflow: hidden;
 }
 
 .container-large.background-color-alternate {
@@ -176,15 +184,16 @@
   display: flex;
   width: 100%;
   max-width: 50%;
-  padding-right: 4rem;
-  padding-left: 4rem;
+  /* padding-right: 4rem;
+  padding-left: 4rem; */
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
   flex-direction: column;
   justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
-
+  min-height: auto;
   border-radius: 2rem;
-
   background-color: #dde3ff;
 }
 
@@ -204,6 +213,7 @@
 .sign_heading-wrapper {
   display: flex;
   margin-bottom: 4rem;
+  margin-bottom: 2rem;
   flex-direction: column;
   justify-content: center;
   flex-wrap: nowrap;
@@ -212,7 +222,7 @@
 
 @media screen and (max-width: 479px) {
   .sign_heading-wrapper {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -222,26 +232,29 @@
 
 @media screen and (max-width: 479px) {
   .sign_heading-wrapper.login {
+    /* margin-bottom: 2rem; */
     margin-bottom: 1.5rem;
   }
 }
 
 .sign_heading {
   font-family: Poppins;
-  font-size: 3.5rem;
+  /* font-size: 3.5rem; */
+  font-size: 2.8rem;
   line-height: 100%;
   font-weight: 700;
 }
 
 @media screen and (max-width: 991px) {
   .sign_heading {
-    font-size: 3.3rem;
+    /* font-size: 3.3rem; */
+    font-size: 2.5rem;
   }
 }
 
 @media screen and (max-width: 479px) {
   .sign_heading {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -669,7 +682,7 @@
 
 .signup_input-wrap {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .signup_input-wrap.pass {
@@ -677,12 +690,12 @@
 }
 
 .signup_input-wrap.confirm {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 479px) {
   .signup_input-wrap.confirm {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -794,7 +807,7 @@
 
 .tab-link-tab-1 {
   padding: 0px;
-  background-color: hsla(0, 0.00%, 0.00%, 0.00);
+  background-color: hsla(0, 0%, 0%, 0);
 }
 
 .tab-link-tab-1:global(.w--current) {
@@ -802,7 +815,7 @@
   padding-top: 0px;
   padding-right: 0px;
   padding-bottom: 0px;
-  background-color: hsla(0, 0.00%, 0.00%, 0.00);
+  background-color: hsla(0, 0%, 0%, 0);
 }
 
 .code-embed {

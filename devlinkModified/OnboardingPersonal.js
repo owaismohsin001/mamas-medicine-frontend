@@ -142,10 +142,12 @@ export function OnboardingPersonal({
           <_Builtin.Block
             className={_utils.cx(_styles, "padding-global", "padding-custom1")}
             tag="div"
+            style={{ paddingLeft: 0 }}
           >
             <_Builtin.Block
               className={_utils.cx(_styles, "margin-bottom", "margin-custom2")}
               tag="div"
+              style={{ paddingLeft: 0 }}
             >
               <_Builtin.Paragraph
                 className={_utils.cx(
@@ -307,7 +309,8 @@ export function OnboardingPersonal({
                 className={_utils.cx(_styles, "_500ch_max", "text-align-right")}
                 tag="div"
               >
-                {"300 words max."}
+                {/* {"300 words max."}  */}
+                {"500 words max."}
               </_Builtin.Block>
             </_Builtin.Block>
             <_Builtin.FormButton

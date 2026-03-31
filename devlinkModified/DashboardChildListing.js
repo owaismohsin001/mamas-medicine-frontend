@@ -3,63 +3,71 @@ import React, { useRef, useState, useEffect } from "react";
 import * as _Builtin from "../devlink/_Builtin";
 import * as _utils from "../devlink/utils";
 import _styles from "../devlink/DashboardChildListing.module.css";
-import "../app/addChild.css"
-import "../app/autocomplete.css"
+import "../app/addChild.css";
+import "../app/autocomplete.css";
 import { request } from "./env";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 function PlacesAutocomplete({ name, form, setForm }) {
   const [query, setQuery] = useState("");
   const [resultPlaceId, setResultPlaceId] = useState("");
   const [results, setResults] = useState([]);
-  const resultClicked = useRef(false)
+  const resultClicked = useRef(false);
 
   useEffect(() => {
     if (resultClicked.current) return;
     if (!query) return;
     if (query < 4) {
-      setResults([])
-      return
+      setResults([]);
+      return;
     }
 
     request({
-      method: 'GET',
-      endpoint: `/places_autocomplete?q=${query}`
-    })
-      .then(data => {
-        console.log(data)
-        setResults(data.predictions || [])
-      });
-
+      method: "GET",
+      endpoint: `/places_autocomplete?q=${query}`,
+    }).then((data) => {
+      console.log(data);
+      setResults(data.predictions || []);
+    });
   }, [query]);
 
   return (
-    <div className="dropdown-input" style={{ position: "relative", width: "100%" }}>
-      <input style={{ display: 'none' }} value={resultPlaceId} name={name + '_place_id'} />
+    <div
+      className="dropdown-input"
+      style={{ position: "relative", width: "100%" }}
+    >
+      <input
+        style={{ display: "none" }}
+        value={resultPlaceId}
+        name={name + "_place_id"}
+      />
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Place of birth (city, country)"
         style={{ width: "100%", padding: "12px" }}
         name={name}
-        onClick={() => resultClicked.current = false}
+        onClick={() => (resultClicked.current = false)}
       />
 
-      <div className="dropdown" style={{ border: !results?.length ? 'none' : undefined }}>
+      <div
+        className="dropdown"
+        style={{ border: !results?.length ? "none" : undefined }}
+      >
         {results.map((item) => (
           <div
             key={item.place_id}
             onClick={() => {
-              setQuery(item.description)
-              setResultPlaceId(item.place_id)
-              console.log(item)
+              setQuery(item.description);
+              setResultPlaceId(item.place_id);
+              console.log(item);
               setForm({
                 ...form,
-                [name + '_place_id']: item.place_id,
-                [name]: item.description
-              })
-              setResults([])
-              resultClicked.current = true
+                [name + "_place_id"]: item.place_id,
+                [name]: item.description,
+              });
+              setResults([]);
+              resultClicked.current = true;
             }}
             className="item"
           >
@@ -79,18 +87,17 @@ function AddChildModal({ isOpen, onClose, onSave }) {
   if (!isOpen) return <></>;
 
   const handleChange = (e) => {
-    console.log("e.target.value", e, )
-    const key = e.target.name
+    console.log("e.target.value", e);
+    const key = e.target.name;
     setForm({
       ...form,
-      [key]: e.target.value
+      [key]: e.target.value,
     });
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal">
-
         <h2>Add another child</h2>
 
         <label>Child's Name</label>
@@ -137,14 +144,10 @@ function AddChildModal({ isOpen, onClose, onSave }) {
           <button className="close-btn" onClick={onClose}>
             Close
           </button>
-          <button
-            className="save-btn"
-            onClick={() => onSave(form)}
-          >
+          <button className="save-btn" onClick={() => onSave(form)}>
             Save
           </button>
         </div>
-
       </div>
     </div>
   );
@@ -156,7 +159,7 @@ export function DashboardChildListing({
   setLoading,
   family = {},
   selectedChild = null,
-  setSelectedChild = () => { },
+  setSelectedChild = () => {},
   link = {
     href: "#",
   },
@@ -165,96 +168,112 @@ export function DashboardChildListing({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  return <>
-    <AddChildModal isOpen={isOpen} onClose={() => setIsOpen(false)} onSave={async (childData) => {
-      if(!childData.name) {
-        swal({
-          title: "Error",
-          text: "Please enter your child's name",
-          icon: "error",
-        })
-        return;
-      }
-      // Handle saving child data
-      setLoading(true)
-      setIsOpen(false)
-      console.log("childData", childData)
+  return (
+    <>
+      <AddChildModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onSave={async (childData) => {
+          if (!childData.name) {
+            swal({
+              title: "Error",
+              text: "Please enter your child's name",
+              icon: "error",
+            });
+            return;
+          }
+          // Handle saving child data
+          setLoading(true);
+          setIsOpen(false);
+          console.log("childData", childData);
 
-      try {
-        await request({
-        method: "POST",
-        endpoint: "add_children",
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem("authToken")}`,
-        },
-        body: {
-          name: childData.name,
-          // dob: childData.birthday + "T" + (childData.birthtime || "00:00"),
-          // place_of_birth: childData?.birthplace,
-          // place_of_birth_id: childData.birthplace_place_id,
-          // pronouns: childData.pronouns
-        }
-      })
-      refreshData()
-      } catch (e) {
-        swal({
-          title: "Error",
-          text: e?.message || "Something went wrong",
-          icon: "error",
-        })
-      }
-    }} />
-    <_Component
-      className={_utils.cx(
-        _styles,
-        "padding-global-4",
-        "padding-section-medium"
-      )}
-      tag="div"
-      id="children-names-container"
-    >
-      <_Builtin.Block
-        className={_utils.cx(_styles, "container-large-6")}
+          try {
+            await request({
+              method: "POST",
+              endpoint: "add_children",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
+              body: {
+                name: childData.name,
+                // dob: childData.birthday + "T" + (childData.birthtime || "00:00"),
+                // place_of_birth: childData?.birthplace,
+                // place_of_birth_id: childData.birthplace_place_id,
+                // pronouns: childData.pronouns
+              },
+            });
+            refreshData();
+          } catch (e) {
+            swal({
+              title: "Error",
+              text: e?.message || "Something went wrong",
+              icon: "error",
+            });
+          }
+        }}
+      />
+      <_Component
+        className={_utils.cx(
+          _styles,
+          "padding-global-4",
+          "padding-section-medium"
+        )}
         tag="div"
+        id="children-names-container"
       >
         <_Builtin.Block
-          className={_utils.cx(_styles, "family_content-wrapper")}
+          className={_utils.cx(_styles, "container-large-6")}
           tag="div"
         >
           <_Builtin.Block
-            className={_utils.cx(_styles, "family_child-wrapper")}
+            className={_utils.cx(_styles, "family_content-wrapper")}
             tag="div"
-            id="children-container"
           >
-            {Object.entries(family).map(([_, v]) => v.child).map(child => <div
-              key={child?.id}
-              onClick={() => {
-                console.log("setSelectedChild(child?.id)", child)
-                setSelectedChild(child?.id)
-                localStorage.setItem('selectedChild', child?.id)
-              }}
-              className={_utils.cx(_styles, "family_child", selectedChild == child?.id ? "is-active" : "")}
+            <_Builtin.Block
+              className={_utils.cx(_styles, "family_child-wrapper")}
               tag="div"
+              id="children-container"
             >
-              <_Builtin.Block
-                className={_utils.cx(_styles, "child_name")}
-                tag="div"
-              >
-                {child?.name}
-              </_Builtin.Block>
-            </div>)}
+              {Object.entries(family)
+                .map(([_, v]) => v.child)
+                .map((child) => (
+                  <div
+                    key={child?.id}
+                    onClick={() => {
+                      console.log("setSelectedChild(child?.id)", child);
+                      setSelectedChild(child?.id);
+                      localStorage.setItem("selectedChild", child?.id);
+                    }}
+                    className={_utils.cx(
+                      _styles,
+                      "family_child",
+                      selectedChild == child?.id ? "is-active" : ""
+                    )}
+                    tag="div"
+                  >
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "child_name")}
+                      tag="div"
+                    >
+                      {child?.name.length > 7
+                        ? child.name.slice(0, 6) + "..."
+                        : child?.name || "Unnamed Child"}
+                    </_Builtin.Block>
+                  </div>
+                ))}
+            </_Builtin.Block>
+            <div
+              className={_utils.cx(_styles, "family_link")}
+              button={false}
+              id="add_child_link"
+              block=""
+              onClick={() => setIsOpen(true)}
+            >
+              {text3}
+            </div>
           </_Builtin.Block>
-          <div
-            className={_utils.cx(_styles, "family_link")}
-            button={false}
-            id="add_child_link"
-            block=""
-            onClick={() => setIsOpen(true)}
-          >
-            {text3}
-          </div>
         </_Builtin.Block>
-      </_Builtin.Block>
-    </_Component>
-  </>;
+      </_Component>
+    </>
+  );
 }
