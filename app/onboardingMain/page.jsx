@@ -307,7 +307,7 @@ const App = () => {
       } catch (e) {
         swal({
           title: "Error",
-          text: e?.message, // ✅ Fixed: was `err?.message`
+          text: e?.message,
           icon: "error",
         });
       }
