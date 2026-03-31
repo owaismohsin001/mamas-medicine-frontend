@@ -329,7 +329,8 @@
 }
 
 .margin-custom1 {
-  margin: 1.5rem;
+  /* margin: 1.5rem; */
+  margin : 1.5rem 0rem;
 }
 
 .margin-xhuge {
@@ -598,6 +599,7 @@
   font-size: 1.8rem;
   font-style: italic;
   font-weight: 400;
+  font-family: Quicksand;
 }
 
 @media screen and (max-width: 479px) {
@@ -611,15 +613,45 @@
 }
 
 .parent_form {
-  width: 25rem;
+  width: 100%;
+  max-width: 25rem;
   margin-bottom: 0px;
   padding-left: 0.3rem;
+
+}
+
+/* @media screen and (max-width: 479px) {
+  .parent_form {
+    padding-left: 0rem;
+  }
+} */
+
+
+.dropdown-input > input[name="parent"]::placeholder {
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 479px) {
+  .dropdown-input > input[name="parent"]::placeholder {
+    font-size: 1.2rem;
+  }
 }
 
 .text-block-5 {
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
+  /* margin-top: 5px; */
+  margin:30px 0px 20px 0px;
   font-family: Quicksand;
-  font-size: 12px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  
+}
+
+@media screen and (max-width: 479px) {
+  .text-block-5  {
+    margin:20px 0px 10px 0px;
+    font-size: 1.2rem;
+  }
 }
 
 .input_form-wrapper {
@@ -1251,6 +1283,7 @@
 .image-7 {
   width: 2rem;
   height: 2rem;
+  color: antiquewhite;
 }
 
 @media screen and (max-width: 479px) {
