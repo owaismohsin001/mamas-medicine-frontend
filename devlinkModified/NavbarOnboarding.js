@@ -24,7 +24,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
         docHeight: false,
         noScroll: false,
         animation: "default",
-        collapse: "tiny",
+        collapse: "all",
       }}
     >
       <_Builtin.Block
