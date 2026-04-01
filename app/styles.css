@@ -120,25 +120,116 @@
   margin-bottom: 8rem !important;
 }
 
-.lottie-bg {
-  position: absolute !important;
-  /* top: 50%; */
-  left: 50%;
-  /* transform: translate(-50%, -50%) scale(1.0); */
-  width: 100%;
-  /* height: 100%; */
-  z-index: 0;
-  overflow-y: clip;
+@media screen and (max-width: 1024px) {
+  .onboarding-patch .content div:has(> h2) {
+    margin: 0 !important;
+    margin-bottom: 4rem !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .onboarding-patch .content div:has(> h2) {
+    margin: 0 !important;
+    margin: 2rem 0rem !important;
+  }
 }
 
 .lottie-bg {
-  position: absolute;
-  /* top: -50vh !important; */
-  margin-top: -70vh;
-  inset: 0; /* top:0 left:0 right:0 bottom:0 */
+  position: absolute !important;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(0%, 0%) scale(1.0); */
+  /* width: 100%; */
+  /* height: 100%; */
   z-index: 0;
-  pointer-events: none; /* so it doesn’t block clicks */
+  overflow-y: clip;
+  inset: 0;
+  text-align: center;
+  /* top: -50%;
+  left: 0;
+  right: 0; */
+  overflow: hidden;
+  /* bottom: -50%; */
+
+  /* bottom: -30%;  */
 }
+
+@media screen and (max-width: 1024px) {
+  .lottie-bg {
+    top: -40%;
+    bottom: -40%;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .lottie-bg {
+    top: -35%;
+    bottom: -35%;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lottie-bg {
+    top: -30%;
+    bottom: -30%;
+    /* left: 40%;
+        right: 40%; */
+    /* inset: 0; */
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .lottie-bg {
+    top: -30%;
+    bottom: -30%;
+    left: 0%;
+    right: 0%;
+    /* inset: 0; */
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .lottie-bg {
+    top: -25%;
+    bottom: -25%;
+    left: 0%;
+    right: 0%;
+    /* inset: 0; */
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .lottie-bg {
+    top: -20%;
+    bottom: -20%;
+    left: 0%;
+    right: 0%;
+    /* inset: 0; */
+  }
+}
+
+.bg-video-img {
+  width: 100%;
+  height: 100%;
+  /* This is the "magic" property for background images */
+  object-fit: cover;
+  /* Ensures the focus of the gif stays in the center */
+  object-position: center;
+  overflow: hidden;
+}
+
+/* .lottie-bg {
+  position: absolute;
+  top: -50vh !important;
+  margin-top: -70vh;
+  inset: 0; top:0 left:0 right:0 bottom:0
+  z-index: 0;
+  pointer-events: none; so it doesn’t block clicks
+} */
 
 /* .lottie-bg > div {
   width: 80vw;
@@ -197,5 +288,12 @@
   .onboarding-patch > div {
     padding-top: 0.5rem !important;
     transform: scale(0.85); /* tighter scale for smaller devices */
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .onboarding-patch > div#onboarding-complete-parent {
+    padding-top: 0.5rem !important;
+    transform: scale(0.99); /* tighter scale for smaller devices */
   }
 }

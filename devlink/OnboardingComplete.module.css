@@ -160,7 +160,7 @@
 
 @media screen and (max-width: 479px) {
   .onboarding_processing-wrapper {
-    margin-bottom: 4rem;
+    /* margin-bottom: 2rem; */
     padding-right: 1rem;
     padding-left: 1rem;
     justify-content: flex-start;
@@ -221,7 +221,7 @@
 }
 
 .margin-custom3 {
-  margin: 3.5rem;
+  margin: 3 rem;
 }
 
 .margin-bottom.margin-custom3.desc {

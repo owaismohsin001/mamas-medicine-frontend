@@ -5,17 +5,18 @@ import * as _utils from "../devlink/utils";
 import _styles from "../devlink/OnboardingComplete.module.css";
 import Lottie from "lottie-react";
 import animationData from "./wave.json";
-import "../app/styles.css"
+
+import "../app/styles.css";
 
 export default function Section({ children }) {
-
   return (
-    <div className="section">
+    <div className="section" style={{ overflow: "hidden" }}>
       <div className="lottie-bg">
-        <Lottie animationData={animationData} loop autoplay />
+        {/* <Lottie animationData={animationData} loop autoplay /> */}
+        <img src="./wave.gif" alt="Wave animation" className="bg-video-img" />
       </div>
 
-      <div className="content">
+      <div className="content" style={{ position: "relative", zIndex: 1 }}>
         {children}
       </div>
     </div>
@@ -37,6 +38,7 @@ export function OnboardingComplete({
 }) {
   return (
     <_Component
+      id="onboarding-complete-parent"
       className={_utils.cx(_styles, "padding-global", "padding-section-medium")}
       tag="div"
     >
@@ -73,7 +75,11 @@ export function OnboardingComplete({
               tag="div"
             >
               <_Builtin.Block
-                className={_utils.cx(_styles, "margin-bottom", "margin-custom3")}
+                className={_utils.cx(
+                  _styles,
+                  "margin-bottom",
+                  "margin-custom3"
+                )}
                 tag="div"
               >
                 <_Builtin.Paragraph
@@ -89,7 +95,11 @@ export function OnboardingComplete({
                 </_Builtin.Paragraph>
               </_Builtin.Block>
               <_Builtin.Block
-                className={_utils.cx(_styles, "margin-bottom", "margin-custom3")}
+                className={_utils.cx(
+                  _styles,
+                  "margin-bottom",
+                  "margin-custom3"
+                )}
                 tag="div"
               >
                 <_Builtin.Paragraph
@@ -99,7 +109,7 @@ export function OnboardingComplete({
                     "big",
                     "text-color-primary"
                   )}
-                  style={{ fontWeight: 'bold' }}
+                  style={{ fontWeight: "bold" }}
                 >
                   {"Keep an eye on your email - that's where it begins."}
                 </_Builtin.Paragraph>
