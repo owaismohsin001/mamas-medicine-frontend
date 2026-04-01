@@ -6,6 +6,7 @@ import _styles from "../devlink/DashboardJourneys.module.css";
 import ReactMarkdown from "react-markdown";
 import "../app/modal.css"
 import { request } from "./env";
+import SoulReading from "../app/SoulReading"
 
 export default function InsightModal({ onClose, insight }) {
   console.log(insight)
@@ -22,16 +23,18 @@ export default function InsightModal({ onClose, insight }) {
         </div>
 
         {/* Summary (non-scrollable) */}
-        <div className="summary">
+        {/* <div className="summary">
           <ReactMarkdown>{insight?.summary_text}</ReactMarkdown>
-        </div>
+          <SoulReading text={insight?.summary_text} />
+        </div> */}
 
         {/* Divider */}
         <div className="divider" />
 
         {/* Deep Analysis (scrollable) */}
         <div className="deep">
-          <ReactMarkdown>{insight?.deep_text}</ReactMarkdown>
+          <SoulReading summary={insight?.summary_text} deep={insight?.deep_text} /> 
+          {/* <ReactMarkdown>{insight?.deep_text}</ReactMarkdown> */}
         </div>
       </div>
     </div>
@@ -125,7 +128,7 @@ export function DashboardJourneys({
                 >
                   <div
                     className={_utils.cx(_styles, "journey_btn", "is-begin")}
-                    button={false}
+                    // button={false}
                     block="inline"
                     options={link1}
                     style={{ background: item?.insights?.length || !item?.purchases?.length ? "white" : undefined }}
@@ -215,7 +218,7 @@ export function DashboardJourneys({
                 >
                   <_Builtin.Link
                     className={_utils.cx(_styles, "link-block", "small")}
-                    button={false}
+                    // button={false}
                     block="inline"
                     options={link2}
                   >
@@ -267,7 +270,7 @@ export function DashboardJourneys({
                 >
                   <_Builtin.Link
                     className={_utils.cx(_styles, "link-block-2", "small")}
-                    button={false}
+                    // button={false}
                     block="inline"
                     options={link3}
                   >
@@ -315,7 +318,7 @@ export function DashboardJourneys({
                 >
                   <_Builtin.Link
                     className={_utils.cx(_styles, "link-block-2", "small")}
-                    button={false}
+                    // button={false}
                     block="inline"
                     options={link4}
                   >
