@@ -5,12 +5,12 @@ import * as _utils from "../devlink/utils";
 import _styles from "../devlink/NavbarOnboarding.module.css";
 
 export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const user = localStorage.getItem("user")
-    if(user) setUser(JSON.parse(user))
-  }, [])
+    const user = localStorage.getItem("user");
+    if (user) setUser(JSON.parse(user));
+  }, []);
 
   return (
     <_Component
@@ -24,7 +24,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
         docHeight: false,
         noScroll: false,
         animation: "default",
-        collapse: "tiny",
+        collapse: "medium",
       }}
     >
       <_Builtin.Block
@@ -231,15 +231,18 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               >
                 {user ? "Dashboard" : "Log In"}
               </_Builtin.Link>
-              {user && <div
-                className={_utils.cx(_styles, "nav-link-6")}
-                onClick={() => {
-                  localStorage.clear()
-                  window.location.href = "/signin"
-                }}
-              >
-                {"Logout"}
-              </div>}
+              {user && (
+                <button
+                  type="button"
+                  className={_utils.cx(_styles, "nav-link-6", "logout_button")}
+                  onClick={() => {
+                    localStorage.clear();
+                    window.location.href = "/signin";
+                  }}
+                >
+                  {"Logout"}
+                </button>
+              )}
             </_Builtin.NavbarMenu>
             <_Builtin.NavbarButton
               className={_utils.cx(_styles, "nav_menu-bnt-2")}
