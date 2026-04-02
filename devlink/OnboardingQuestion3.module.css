@@ -701,8 +701,8 @@
 
 @media screen and (max-width: 479px) {
   .onbording_names-navigation {
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
   }
