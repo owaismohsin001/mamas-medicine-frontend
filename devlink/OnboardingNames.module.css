@@ -147,6 +147,7 @@
 }
 
 .onboarding_names-wrapper {
+  --onboarding-form-font-size: 1.25rem;
   display: flex;
   width: 100%;
   margin-bottom: 0rem;
@@ -911,7 +912,7 @@
 }
 
 .back_bnt {
-  background-color: hsla(208.00000000000003, 82.57%, 57.25%, 0.00);
+  background-color: hsla(208.00000000000003, 82.57%, 57.25%, 0);
 }
 
 .back_bnt-icon {
@@ -924,7 +925,7 @@
 
   border-radius: 100%;
 
-  background-color: hsla(0, 0.00%, 100.00%, 1.00);
+  background-color: hsla(0, 0%, 100%, 1);
 }
 
 @media screen and (max-width: 479px) {
@@ -964,7 +965,7 @@
 
   background-color: #fcbd97;
 
-  transition: border-color 300ms ease,background-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
 
   font-family: Quicksand;
   color: #333;
@@ -1002,5 +1003,69 @@
     height: 4rem;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.pronoun_group {
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pronoun_option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pronoun_radio {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+}
+
+.pronoun_label {
+  font-family: Quicksand;
+  color: #333;
+  font-size: var(--onboarding-form-font-size);
+  line-height: 1.2;
+  margin-bottom: 0px !important;
+}
+
+.names_child-heading,
+.names_form-subtitle,
+.first_mame-fild,
+.first_mame-fild::placeholder,
+.drop_dowm,
+.text-field-2,
+.text-field-2::placeholder,
+.back_text,
+.btn-onboarding,
+.paragraph.text-color-primary,
+.submit-button {
+  font-size: var(--onboarding-form-font-size);
+}
+
+@media screen and (max-width: 479px) {
+  .pronoun_group {
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  .names_child-heading,
+  .names_form-subtitle,
+  .first_mame-fild,
+  .first_mame-fild::placeholder,
+  .drop_dowm,
+  .text-field-2,
+  .text-field-2::placeholder,
+  .back_text,
+  .btn-onboarding,
+  .paragraph.text-color-primary,
+  .submit-button,
+  .pronoun_label {
+    font-size: var(--onboarding-form-font-size);
   }
 }

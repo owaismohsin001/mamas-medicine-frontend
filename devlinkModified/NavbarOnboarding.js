@@ -41,7 +41,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
           >
             <_Builtin.NavbarBrand
               className={_utils.cx(_styles, "brand")}
-              aria-label="Mama’s Medicine — home page"
+              aria-label="Soul Sighted — home page"
               options={{
                 href: "https://mamasmedicine.webflow.io/",
                 preload: "none",
@@ -52,8 +52,8 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                 width="auto"
                 height="auto"
                 loading="eager"
-                alt="Mama’s Medicine logo"
-                src="https://cdn.prod.website-files.com/695a4a423b1b9862c9aea287/695a4a423b1b9862c9aea28c_Logo-compress.webp"
+                alt="Soul Sighted logo"
+                src="https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/69b9355119877eff4553c6d8_Soul%20Sighted%20(6).png"
               />
             </_Builtin.NavbarBrand>
             <_Builtin.NavbarMenu

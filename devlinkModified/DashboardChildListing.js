@@ -262,15 +262,16 @@ export function DashboardChildListing({
                   </div>
                 ))}
             </_Builtin.Block>
-            <div
+            <_Builtin.Link
               className={_utils.cx(_styles, "family_link")}
               button={false}
               id="add_child_link"
               block=""
               onClick={() => setIsOpen(true)}
+              options={{ href: "#" }}
             >
               {text3}
-            </div>
+            </_Builtin.Link>
           </_Builtin.Block>
         </_Builtin.Block>
       </_Component>

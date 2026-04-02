@@ -50,7 +50,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                   loading="lazy"
                   width="auto"
                   height="auto"
-                  alt="Mama’s Medicine Home"
+                  alt="soul sighted logo"
                   src="https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/69b9355119877eff4553c6d8_Soul%20Sighted%20(6).png"
                 />
               </_Builtin.Link>

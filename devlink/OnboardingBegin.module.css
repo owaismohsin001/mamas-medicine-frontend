@@ -479,6 +479,7 @@
   .onbording_heading {
     font-size: 2rem;
     line-height: 140%;
+    font-weight: bold;
   }
 }
 
@@ -756,7 +757,7 @@
 
   background-color: #fcbd97;
 
-  transition: border-color 300ms ease,background-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
 
   font-family: Quicksand;
   color: #333;
@@ -837,7 +838,7 @@
 
   background-color: #fcbd97;
 
-  transition: border-color 300ms ease,background-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
 
   font-family: Quicksand;
   color: #333;

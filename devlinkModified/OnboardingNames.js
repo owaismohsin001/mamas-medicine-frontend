@@ -80,36 +80,72 @@ export function OnboardingNames({
                   />
                   <_Builtin.FormBlockLabel
                     className={_utils.cx(_styles, "names_child-heading")}
-                    htmlFor="parent_pronouns"
+                    htmlFor="parent_pronoun_he"
+                    id="parent_pronouns_label"
                   >
                     {"Your Pronoun"}
                   </_Builtin.FormBlockLabel>
-                  <_Builtin.FormSelect
-                    className={_utils.cx(_styles, "drop_dowm")}
-                    name="Parent-s-Pronouns"
-                    data-name="Parent's Pronouns"
-                    required={false}
-                    multiple={false}
-                    id="parent_pronouns"
-                    options={[
-                      {
-                        t: "Choose from dropdown",
-                        v: "",
-                      },
-                      {
-                        t: "he/him",
-                        v: "he/him",
-                      },
-                      {
-                        t: "she/her",
-                        v: "she/her",
-                      },
-                      {
-                        t: "they/them",
-                        v: "they/them",
-                      },
-                    ]}
-                  />
+                  <_Builtin.Block
+                    className={_utils.cx(_styles, "pronoun_group")}
+                    tag="div"
+                    role="radiogroup"
+                    aria-labelledby="parent_pronouns_label"
+                  >
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Parent-s-Pronouns"
+                        value="he/him"
+                        id="parent_pronoun_he"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="parent_pronoun_he"
+                      >
+                        {"He"}
+                      </label>
+                    </_Builtin.Block>
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Parent-s-Pronouns"
+                        value="she/her"
+                        id="parent_pronoun_she"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="parent_pronoun_she"
+                      >
+                        {"She"}
+                      </label>
+                    </_Builtin.Block>
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Parent-s-Pronouns"
+                        value="they/them"
+                        id="parent_pronoun_they"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="parent_pronoun_they"
+                      >
+                        {"They"}
+                      </label>
+                    </_Builtin.Block>
+                  </_Builtin.Block>
                   <_Builtin.FormBlockLabel
                     className={_utils.cx(_styles, "names_child-heading")}
                     htmlFor="child-name"
@@ -130,36 +166,72 @@ export function OnboardingNames({
                   />
                   <_Builtin.FormBlockLabel
                     className={_utils.cx(_styles, "names_child-heading")}
-                    htmlFor="child_pronouns"
+                    htmlFor="child_pronoun_he"
+                    id="child_pronouns_label"
                   >
                     {"Child Pronoun"}
                   </_Builtin.FormBlockLabel>
-                  <_Builtin.FormSelect
-                    className={_utils.cx(_styles, "drop_dowm")}
-                    name="Child-s-Pronoun"
-                    data-name="Child's Pronoun"
-                    required={false}
-                    multiple={false}
-                    id="child_pronouns"
-                    options={[
-                      {
-                        t: "Choose from dropdown",
-                        v: "",
-                      },
-                      {
-                        t: "she/her",
-                        v: "she/her",
-                      },
-                      {
-                        t: "he/him",
-                        v: "he/him",
-                      },
-                      {
-                        t: "they/them",
-                        v: "they/them",
-                      },
-                    ]}
-                  />
+                  <_Builtin.Block
+                    className={_utils.cx(_styles, "pronoun_group")}
+                    tag="div"
+                    role="radiogroup"
+                    aria-labelledby="child_pronouns_label"
+                  >
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Child-s-Pronoun"
+                        value="he/him"
+                        id="child_pronoun_he"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="child_pronoun_he"
+                      >
+                        {"He"}
+                      </label>
+                    </_Builtin.Block>
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Child-s-Pronoun"
+                        value="she/her"
+                        id="child_pronoun_she"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="child_pronoun_she"
+                      >
+                        {"She"}
+                      </label>
+                    </_Builtin.Block>
+                    <_Builtin.Block
+                      className={_utils.cx(_styles, "pronoun_option")}
+                      tag="div"
+                    >
+                      <input
+                        className={_utils.cx(_styles, "pronoun_radio")}
+                        type="radio"
+                        name="Child-s-Pronoun"
+                        value="they/them"
+                        id="child_pronoun_they"
+                      />
+                      <label
+                        className={_utils.cx(_styles, "pronoun_label")}
+                        htmlFor="child_pronoun_they"
+                      >
+                        {"They"}
+                      </label>
+                    </_Builtin.Block>
+                  </_Builtin.Block>
                   <_Builtin.FormButton
                     className={_utils.cx(_styles, "submit-button")}
                     type="submit"
@@ -188,7 +260,7 @@ export function OnboardingNames({
                   _styles,
                   "paragraph",
                   "text-color-primary",
-                  "max-widht10"
+                  "max-width-10"
                 )}
               >
                 {text1}

@@ -7,10 +7,9 @@ import _styles from "../devlink/OnboardingBegin.module.css";
 export function OnboardingBegin({
   as: _Component = _Builtin.Block,
   title = "I’m so excited to begin this with you.",
-  text1 = "We’ll ask for a few details so your insight can be prepared with care.",
-  text2 = "You don’t need to rush, and you don’t need to get everything perfect.",
-  text3 = "You can pause and return at any time.",
-  text4 = "Let’s do it",
+  text1 = "Let's start with a few details, so your insight can be prepared with care",
+  text2 = "Take your time - I’m ready when you are.",
+  text3 = "Let’s do it",
 
   link = {
     href: "#",
@@ -95,9 +94,7 @@ export function OnboardingBegin({
                   "text-color-primary",
                   "onbord"
                 )}
-              >
-                {text3}
-              </_Builtin.Paragraph>
+              ></_Builtin.Paragraph>
             </_Builtin.Block>
           </_Builtin.Block>
           <_Builtin.Link
