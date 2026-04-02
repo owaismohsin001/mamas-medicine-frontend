@@ -33,7 +33,7 @@ export default function InsightModal({ onClose, insight }) {
 
         {/* Deep Analysis (scrollable) */}
         <div className="deep">
-          <SoulReading summary={insight?.summary_text} deep={insight?.deep_text} /> 
+          <SoulReading childName={insight?.child_name} summary={insight?.summary_text} deep={insight?.deep_text} /> 
           {/* <ReactMarkdown>{insight?.deep_text}</ReactMarkdown> */}
         </div>
       </div>
@@ -136,7 +136,11 @@ export function DashboardJourneys({
                       try {
                         console.log(item)
                         if (item?.insights?.length) {
-                          if (item?.insights?.[0]?.status == "ready") setInsightModal(item?.insights?.[0])
+                          if (item?.insights?.[0]?.status == "ready") setInsightModal({
+                            childName: console.log(item),
+                            child_name: item.child?.name || "Your Child",
+                            ...(item?.insights?.[0] ?? {})
+                          })
                         }
                         else if (!item?.purchases?.length) {
                           setLoading(true)

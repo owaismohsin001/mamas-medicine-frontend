@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { request } from "../../devlinkModified/env";
 import "./purchase.css"
 import "../loader.css"
+import "../swal.css";
 import swal from 'sweetalert';
 
 function PurchaseModal({ isOpen = true, redirectUrl, onPurchase }) {
