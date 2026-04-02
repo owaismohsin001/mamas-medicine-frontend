@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import * as _Builtin from "../devlink/_Builtin";
 import * as _utils from "../devlink/utils";
 import _styles from "../devlink/DashboardWelcome.module.css";
 
 export function DashboardWelcome({
   as: _Component = _Builtin.Block,
-  user = { name: '' },
+  user: initialUser = { name: '' }, // Rename prop to avoid confusion
   nOfChildren = 0,
   text1 = "Welcome, ",
   text2 = "I'm excited to share this work with you.",
@@ -20,6 +20,23 @@ export function DashboardWelcome({
     </>
   ),
 }) {
+
+  // 2. Initialize state
+  const [userName, setUserName] = useState("");
+
+  // 3. Fetch from localStorage on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user"); // Adjust key if needed (e.g., "userName")
+    if (storedUser) {
+      try {
+        const userObj = JSON.parse(storedUser);
+        setUserName(userObj .name || "");
+      } catch (e) {
+        setUserName(storedUser); // Fallback if it's a plain string
+      }
+    }
+  }, []);
+
   return (
     <_Component
       className={_utils.cx(
@@ -50,7 +67,7 @@ export function DashboardWelcome({
               )}
               id="welcome-parent-name"
             >
-              {text1} {user?.name}
+              {text1} {userName || initialUser.name}
             </_Builtin.Paragraph>
           </_Builtin.Block>
           <_Builtin.Block
@@ -88,7 +105,7 @@ export function DashboardWelcome({
               )}
               id="welcome-back-parent-name"
             >
-              {text3} {user?.name}
+              {text3} {userName || initialUser.name}
             </_Builtin.Paragraph>
           </_Builtin.Block>
           <_Builtin.Block

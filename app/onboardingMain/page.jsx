@@ -4,6 +4,7 @@ import { NavbarOnboarding } from "../../devlinkModified/NavbarOnboarding";
 import { DashboardFooter } from "../../devlinkModified/DashboardFooter";
 import { SignupForm } from "../../devlink/SignupForm";
 import "../styles.css";
+import "../swal.css";
 
 import { OnboardingBegin } from "../../devlinkModified/OnboardingBegin";
 import { OnboardingNames } from "../../devlinkModified/OnboardingNames";
@@ -302,6 +303,7 @@ const App = () => {
             title: "Success",
             text: "Your insight is ready and has been sent to your email!",
             icon: "success",
+            className: "custom-swal-success", // This "wraps" the modal in your class
           }).then(() => (window.location.href = "/dashboard"));
         }
       } catch (e) {
@@ -309,6 +311,7 @@ const App = () => {
           title: "Error",
           text: e?.message,
           icon: "error",
+          className: "custom-swal-error", // This "wraps" the modal in your class
         });
       }
     };
@@ -373,6 +376,7 @@ const App = () => {
                 title: "Error",
                 text: error,
                 icon: "error",
+                className: "custom-swal-error", // This "wraps" the modal in your class
               });
               return;
             }

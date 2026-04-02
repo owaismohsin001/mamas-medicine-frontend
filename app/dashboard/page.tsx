@@ -12,6 +12,7 @@ import { DashboardYourFamily } from "../../devlinkModified/DashboardYourFamily";
 import { DashboardFooter } from "../../devlinkModified/DashboardFooter";
 import { request } from "../../devlinkModified/env";
 
+import "../swal.css";
 import "../loader.css";
 
 const App = () => {

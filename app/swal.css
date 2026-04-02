@@ -1,0 +1,15 @@
+.swal-button--confirm {
+  background-color: #d8dfff !important; /* Green */
+  color: white;
+}
+
+.swal-icon--success__line {
+  background-color: #eaccea;
+}
+
+.swal-icon--error {
+  border-color: #fabd96;
+}
+.swal-icon--error * {
+  background: #fabd96;
+}
