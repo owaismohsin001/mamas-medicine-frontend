@@ -246,59 +246,6 @@ const App = () => {
         const { status, insight, summary } = response;
 
         if (status == "ready") {
-          // ── Auto-send email insight ──────────────────────────────────────
-          try {
-            // Retrieve email: first try a direct 'email' key, then fall back
-            // to the 'user' object — both stored in localStorage during sign-in
-            let email = localStorage.getItem("email");
-            const userStr = localStorage.getItem("user");
-
-            if (!email && userStr) {
-              try {
-                const user = JSON.parse(userStr);
-                if (user?.email) email = user.email;
-              } catch (_) {}
-            }
-
-            // if (email) {
-            //   // const insightText =
-            //   //   insight ||
-            //   //   summary ||
-            //   //   `Your personalized insight for ${mapped.childname} is ready! Visit your dashboard to view the full details.`;
-
-            //   // const emailRes = await fetch("/api/send-insight", {
-            //   //   method: "POST",
-            //   //   headers: { "Content-Type": "application/json" },
-            //   //   body: JSON.stringify({
-            //   //     email,
-            //   //     childName: mapped.childname,
-            //   //     insights: insightText,
-            //   //   }),
-            //   // });
-
-            //   // if (emailRes.ok) {
-            //   //   console.log("[send-insight] Email sent successfully to", email);
-            //   // } else {
-            //   //   const errBody = await emailRes.json().catch(() => ({}));
-            //     // console.warn(
-            //     //   "[send-insight] Email API responded with error:",
-            //     //   errBody
-            //     // );
-            //   // }
-            // } else {
-            //   console.warn(
-            //     "[send-insight] No recipient email found in localStorage — skipping email."
-            //   );
-            // }
-          } catch (emailErr) {
-            // Email failure must never block the success UX
-            console.error(
-              "[send-insight] Failed to send email insight:",
-              emailErr
-            );
-          }
-          // ────────────────────────────────────────────────────────────────
-
           swal({
             title: "Success",
             text: "Your insight is ready and has been sent to your email!",
