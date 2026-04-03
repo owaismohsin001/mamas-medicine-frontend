@@ -316,7 +316,7 @@ const App = () => {
       }
     };
 
-    sendInsightAndEmail();
+    // sendInsightAndEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, results]);
   // f()
