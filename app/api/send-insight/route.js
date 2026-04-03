@@ -203,14 +203,14 @@ export async function POST(req) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: "ramshamzamop@gmail.com",
+        pass: "denl xlhu orci ydcm",
       },
     });
 
     // Email content
     const mailOptions = {
-      from: `"Mama's Medicine" <${process.env.SMTP_USER}>`,
+      from: `"Mama's Medicine" <ramshamzamop@gmail.com>`,
       to: email,
       subject: `🌟 Soul Snapshot for ${safeChildName} is Ready!`,
       html,
