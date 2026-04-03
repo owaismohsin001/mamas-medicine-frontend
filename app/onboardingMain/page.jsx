@@ -260,36 +260,36 @@ const App = () => {
               } catch (_) {}
             }
 
-            if (email) {
-              const insightText =
-                insight ||
-                summary ||
-                `Your personalized insight for ${mapped.childname} is ready! Visit your dashboard to view the full details.`;
+            // if (email) {
+            //   // const insightText =
+            //   //   insight ||
+            //   //   summary ||
+            //   //   `Your personalized insight for ${mapped.childname} is ready! Visit your dashboard to view the full details.`;
 
-              const emailRes = await fetch("/api/send-insight", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email,
-                  childName: mapped.childname,
-                  insights: insightText,
-                }),
-              });
+            //   // const emailRes = await fetch("/api/send-insight", {
+            //   //   method: "POST",
+            //   //   headers: { "Content-Type": "application/json" },
+            //   //   body: JSON.stringify({
+            //   //     email,
+            //   //     childName: mapped.childname,
+            //   //     insights: insightText,
+            //   //   }),
+            //   // });
 
-              if (emailRes.ok) {
-                console.log("[send-insight] Email sent successfully to", email);
-              } else {
-                const errBody = await emailRes.json().catch(() => ({}));
-                console.warn(
-                  "[send-insight] Email API responded with error:",
-                  errBody
-                );
-              }
-            } else {
-              console.warn(
-                "[send-insight] No recipient email found in localStorage — skipping email."
-              );
-            }
+            //   // if (emailRes.ok) {
+            //   //   console.log("[send-insight] Email sent successfully to", email);
+            //   // } else {
+            //   //   const errBody = await emailRes.json().catch(() => ({}));
+            //     // console.warn(
+            //     //   "[send-insight] Email API responded with error:",
+            //     //   errBody
+            //     // );
+            //   // }
+            // } else {
+            //   console.warn(
+            //     "[send-insight] No recipient email found in localStorage — skipping email."
+            //   );
+            // }
           } catch (emailErr) {
             // Email failure must never block the success UX
             console.error(
@@ -316,7 +316,7 @@ const App = () => {
       }
     };
 
-    // sendInsightAndEmail();
+    sendInsightAndEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, results]);
   // f()
