@@ -64,7 +64,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               <_Builtin.NavbarLink
                 className={_utils.cx(_styles, "nav-link-7")}
                 options={{
-                  href: "https://mamasmedicine.webflow.io/about",
+                  href: "https://soul-sighted.com/about",
                 }}
               >
                 {"About"}
@@ -100,7 +100,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "https://mamasmedicine.webflow.io/soul-sighted",
+                      href: "https://soul-sighted.com/soul-sighted",
                     }}
                   >
                     {"What is Soul Sighted?"}
@@ -108,7 +108,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "https://mamasmedicine.webflow.io/parent-child-relationship",
+                      href: "https://soul-sighted.com/parent-child-dynamic",
                     }}
                   >
                     {"Your Vibes"}
@@ -116,7 +116,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/your-emotions",
                     }}
                   >
                     {"Your Emotions"}
@@ -124,7 +124,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/your-core",
                     }}
                   >
                     {"Your Core"}
@@ -132,7 +132,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/ask-me-anything",
                     }}
                   >
                     {"Ask Me Anything!"}
@@ -170,7 +170,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/soul-sighted",
                     }}
                   >
                     {"What is Soul Sighted?"}
@@ -178,7 +178,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/parent-child-dynamic",
                     }}
                   >
                     {"Your Vibes"}
@@ -186,7 +186,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/your-emotions",
                     }}
                   >
                     {"Your Emotions"}
@@ -194,7 +194,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/your-core",
                     }}
                   >
                     {"Your Core"}
@@ -202,7 +202,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                   <_Builtin.DropdownLink
                     className={_utils.cx(_styles, "soul_link")}
                     options={{
-                      href: "#",
+                      href: "https://soul-sighted.com/ask-me-anything",
                     }}
                   >
                     {"Ask Me Anything!"}
@@ -212,7 +212,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               <_Builtin.NavbarLink
                 className={_utils.cx(_styles, "nav-link-6")}
                 options={{
-                  href: "https://mamasmedicine.webflow.io/faqs",
+                  href: "https://soul-sighted.com/faqs",
                 }}
               >
                 {"FAQ's"}
