@@ -6,17 +6,9 @@ import _styles from "../devlink/DashboardJourneys.module.css";
 import ReactMarkdown from "react-markdown";
 import "../app/modal.css"
 import { request } from "./env";
-import SoulReading, { generateSoulReadingHTML } from "../app/SoulReading"
+import SoulReading from "../app/SoulReading"
 
 export default function InsightModal({ onClose, insight }) {
-  console.log(
-    "VIEW",
-    generateSoulReadingHTML(
-      insight?.summary_text,
-      insight?.deep_text,
-      insight?.child_name
-    )
-  )
   const isOpen = !!insight
   if (!isOpen) return null;
 
