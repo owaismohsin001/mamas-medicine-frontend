@@ -81,7 +81,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block="inline"
                 options={{
-                  href: "https://storyprompt.com/reply/Lslk87m8djFPHZANnIV8",
+                  href: "https://soul-sighted.com/parent-child-dynamic",
                   target: "_blank",
                 }}
               >
@@ -112,7 +112,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "/contact",
+                  href: "https://soul-sighted.com/contact",
                 }}
               >
                 {"Contact Us"}
@@ -122,8 +122,13 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "/signin",
+                  href: "/signin", // Keeps it a real link
                 }}
+                onClick={(e) => {
+                  e.preventDefault(); // Stop the immediate redirect
+                  localStorage.clear();
+                  window.location.href = "/signin"; // Redirect manually
+              }}
               >
                 {"Log Out"}
               </_Builtin.Link>
@@ -147,7 +152,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "/about",
+                  href: "https://soul-sighted.com/about",
                 }}
               >
                 {"About us"}
@@ -157,7 +162,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "#",
+                  href: "https://soul-sighted.com/parent-child-dynamic",
                 }}
               >
                 {"Wall of Love"}
@@ -167,7 +172,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "/faqs",
+                  href: "https://soul-sighted.com/faqs",
                 }}
               >
                 {"FAQ's"}
@@ -192,7 +197,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "#https://www.facebook.com/MamasMedicine.co",
+                  href: "https://www.facebook.com/soulsighted.mama/",
                   target: "_blank",
                   preload: "none",
                 }}
@@ -204,7 +209,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "#https://www.youtube.com/@soulsighted",
+                  href: "https://www.youtube.com/@soulsighted",
                   target: "_blank",
                 }}
               >
@@ -215,7 +220,7 @@ export function DashboardFooter({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "#https://www.instagram.com/mamasmedicine.co/",
+                  href: "https://www.instagram.com/soulsighted.mama/",
                 }}
               >
                 {"Instagram"}
