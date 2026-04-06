@@ -4,7 +4,7 @@ import * as _Builtin from "../devlink/_Builtin";
 import * as _utils from "../devlink/utils";
 import _styles from "../devlink/LoginFormContent.module.css";
 import { request } from "./env";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export function LoginFormContent({
   as: _Component = _Builtin.Block,
@@ -46,7 +46,7 @@ export function LoginFormContent({
             >
               <_Builtin.Block
                 className={_utils.cx(_styles, "sign_heading")}
-                style={{ whiteSpace: 'nowrap' }}
+                style={{ whiteSpace: "nowrap" }}
                 tag="div"
               >
                 {text1}
@@ -236,69 +236,79 @@ export function LoginFormContent({
                     <_Builtin.Link
                       className={_utils.cx(_styles, "login_forgot-link")}
                       button={false}
-                      data-ms-modal="forgot-password"
                       block=""
                       options={{
-                        href: "#",
+                        href: "/forgot-password",
                       }}
                     >
                       {"Forgot Password?"}
                     </_Builtin.Link>
                   </_Builtin.Block>
                 </_Builtin.Block>
-                <button id='submit-btn' type="submit" style={{ display: 'none' }} onClick={async ev => {
-                    ev.preventDefault()
-                    const email = document.querySelector('[data-ms-member=email').value
-                    const password = document.querySelector('[data-ms-member=password]').value
-                    if(!email) return swal({
-                      title: "Error",
-                      text: "Email is required",
-                      icon: "error",
-                    })
-                    if(!password) return swal({
-                      title: "Error",
-                      text: "Password is required",
-                      icon: "error",
-                    })
+                <button
+                  id="submit-btn"
+                  type="submit"
+                  style={{ display: "none" }}
+                  onClick={async (ev) => {
+                    ev.preventDefault();
+                    const email = document.querySelector(
+                      "[data-ms-member=email"
+                    ).value;
+                    const password = document.querySelector(
+                      "[data-ms-member=password]"
+                    ).value;
+                    if (!email)
+                      return swal({
+                        title: "Error",
+                        text: "Email is required",
+                        icon: "error",
+                      });
+                    if (!password)
+                      return swal({
+                        title: "Error",
+                        text: "Password is required",
+                        icon: "error",
+                      });
 
                     try {
-                            const { authToken } = await request({
-                                method: "POST",
-                                endpoint: "auth/login",
-                                body: {
-                                    email,
-                                    password,
-                                }
-                            })
-                            const token = authToken
-                            localStorage.setItem("authToken", authToken)
-                            const data = await request({
-                                method: "GET",
-                                endpoint: "auth/me",
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                }
-                            })
-                            localStorage.setItem("user", JSON.stringify(data))
+                      const { authToken } = await request({
+                        method: "POST",
+                        endpoint: "auth/login",
+                        body: {
+                          email,
+                          password,
+                        },
+                      });
+                      const token = authToken;
+                      localStorage.setItem("authToken", authToken);
+                      const data = await request({
+                        method: "GET",
+                        endpoint: "auth/me",
+                        headers: {
+                          Authorization: `Bearer ${token}`,
+                        },
+                      });
+                      localStorage.setItem("user", JSON.stringify(data));
 
-                            window.location.href = "/dashboard"
-                        } catch(e) {
-                            const err = e
-                            return swal({
-                              title: "Error",
-                              text: err?.message,
-                              icon: "error",
-                            })
-                        }
-                }}></button>
+                      window.location.href = "/dashboard";
+                    } catch (e) {
+                      const err = e;
+                      return swal({
+                        title: "Error",
+                        text: err?.message,
+                        icon: "error",
+                      });
+                    }
+                  }}
+                ></button>
                 <div
                   className="form-button"
                   type="submit"
                   onClick={() => {
-                    document.getElementById('submit-btn').click()
+                    document.getElementById("submit-btn").click();
                   }}
                 >
-                    <div>Sign In</div>
+                  <div>Sign In</div>
                 </div>
               </_Builtin.FormForm>
               <_Builtin.FormSuccessMessage>
