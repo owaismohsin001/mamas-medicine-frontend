@@ -193,24 +193,7 @@ export function ResetPasswordFlow({ as: _Component = _Builtin.Block, token }) {
                 {"Enter your new password below."}
               </_Builtin.Block>
             </_Builtin.Block>
-            <_Builtin.Link
-              className={_utils.cx(_styles, "signin_link")}
-              button={false}
-              block="inline"
-              options={{ href: "/signin" }}
-            >
-              <_Builtin.Block
-                className={_utils.cx(_styles, "sign_bnt")}
-                tag="div"
-              >
-                <_Builtin.Block
-                  className={_utils.cx(_styles, "sign_bnt-text")}
-                  tag="div"
-                >
-                  {"Sign In"}
-                </_Builtin.Block>
-              </_Builtin.Block>
-            </_Builtin.Link>
+
           </_Builtin.Block>
           <_Builtin.Block
             className={_utils.cx(_styles, "reset_content")}
@@ -421,21 +404,7 @@ export function ResetPasswordFlow({ as: _Component = _Builtin.Block, token }) {
                 </_Builtin.FormErrorMessage>
               </_Builtin.FormWrapper>
             )}
-            <_Builtin.Block
-              className={_utils.cx(_styles, "reset_link-wrap")}
-              tag="div"
-            >
-              <_Builtin.Link
-                className={_utils.cx(_styles, "reset_back-link")}
-                button={false}
-                block=""
-                options={{
-                  href: "/signin",
-                }}
-              >
-                {"Back to Sign In"}
-              </_Builtin.Link>
-            </_Builtin.Block>
+
           </_Builtin.Block>
         </_Builtin.Block>
       </_Builtin.Block>

@@ -240,24 +240,7 @@ export function ForgotPasswordForm({
                   "Verification successful! Redirecting to reset your password..."}
               </_Builtin.Block>
             </_Builtin.Block>
-            <_Builtin.Link
-              className={_utils.cx(_styles, "signin_link")}
-              button={false}
-              block="inline"
-              options={link}
-            >
-              <_Builtin.Block
-                className={_utils.cx(_styles, "sign_bnt")}
-                tag="div"
-              >
-                <_Builtin.Block
-                  className={_utils.cx(_styles, "sign_bnt-text")}
-                  tag="div"
-                >
-                  {text3}
-                </_Builtin.Block>
-              </_Builtin.Block>
-            </_Builtin.Link>
+
           </_Builtin.Block>
           <_Builtin.Block
             className={_utils.cx(_styles, "forgot_content")}
@@ -512,21 +495,7 @@ export function ForgotPasswordForm({
                 </_Builtin.Block>
               </_Builtin.Block>
             )}
-            <_Builtin.Block
-              className={_utils.cx(_styles, "forgot_link-wrap")}
-              tag="div"
-            >
-              <_Builtin.Link
-                className={_utils.cx(_styles, "forgot_back-link")}
-                button={false}
-                block=""
-                options={{
-                  href: "/signin",
-                }}
-              >
-                {"Back to Sign In"}
-              </_Builtin.Link>
-            </_Builtin.Block>
+
           </_Builtin.Block>
         </_Builtin.Block>
       </_Builtin.Block>
