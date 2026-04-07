@@ -1,10 +1,9 @@
 import { generateSessionToken } from "../_lib/otpStore";
 
-const XANO_BASE = "https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 async function verifyOtpInXano(email, otp) {
-  const res = await fetch(`${XANO_BASE}otp/verify`, {
+  const res = await fetch("https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/verify_otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, otp }),
@@ -26,13 +25,13 @@ export async function POST(req) {
   try {
     const body = await req.json();
     const email = (body?.email || "").trim().toLowerCase();
-    const otp   = (body?.otp   || "").trim();
+    const otp = (body?.otp || "").trim();
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return Response.json({ error: "A valid email is required." }, { status: 400 });
     }
-    if (!otp || !/^\d{6}$/.test(otp)) {
-      return Response.json({ error: "OTP must be a 6-digit number." }, { status: 400 });
+    if (!otp || !/^\d{4}$/.test(otp)) {
+      return Response.json({ error: "OTP must be a 4-digit number." }, { status: 400 });
     }
 
     const result = await verifyOtpInXano(email, otp);

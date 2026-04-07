@@ -108,7 +108,7 @@ function buildOtpEmailHtml(otp, email) {
 }
 
 async function storeOtpInXano(email, otp) {
-  const res = await fetch(`${XANO_BASE}otp/store`, {
+  const res = await fetch("https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/otp/store", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, otp, expiresIn: 300 }),

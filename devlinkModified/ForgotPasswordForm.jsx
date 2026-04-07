@@ -4,7 +4,7 @@ import * as _Builtin from "../devlink/_Builtin";
 import * as _utils from "../devlink/utils";
 import _styles from "../devlink/ForgotPasswordForm.module.css";
 import { sendOtp, verifyOtp } from "@/app/api/forgotPassword";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 
 export function ForgotPasswordForm({
@@ -27,7 +27,7 @@ export function ForgotPasswordForm({
 }) {
   const [step, setStep] = useState("email");
   const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", ""]);
   const [isLoading, setIsLoading] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
   const router = useRouter();
@@ -42,13 +42,18 @@ export function ForgotPasswordForm({
 
   useEffect(() => {
     if (resendCooldown > 0) {
-      const timer = setTimeout(() => setResendCooldown(resendCooldown - 1), 1000);
+      const timer = setTimeout(
+        () => setResendCooldown(resendCooldown - 1),
+        1000
+      );
       return () => clearTimeout(timer);
     }
   }, [resendCooldown]);
 
   const handleEmailSubmit = async () => {
-    const emailValue = document.querySelector('[data-ms-member="reset-email"]')?.value;
+    const emailValue = document.querySelector(
+      '[data-ms-member="reset-email"]'
+    )?.value;
 
     if (!emailValue) {
       return swal({
@@ -93,7 +98,7 @@ export function ForgotPasswordForm({
     newOtp[index] = value.slice(-1);
     setOtp(newOtp);
 
-    if (value && index < 5) {
+    if (value && index < 3) {
       otpRefs.current[index + 1]?.focus();
     }
   };
@@ -106,21 +111,24 @@ export function ForgotPasswordForm({
 
   const handleOtpPaste = (e) => {
     e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
-    if (pasted.length === 6) {
+    const pasted = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, 4);
+    if (pasted.length === 4) {
       const newOtp = pasted.split("");
       setOtp(newOtp);
-      otpRefs.current[5]?.focus();
+      otpRefs.current[3]?.focus();
     }
   };
 
   const handleOtpSubmit = async () => {
     const otpValue = otp.join("");
 
-    if (otpValue.length !== 6) {
+    if (otpValue.length !== 4) {
       return swal({
         title: "Error",
-        text: "Please enter the complete 6-digit code",
+        text: "Please enter the complete 4-digit code",
         icon: "error",
       });
     }
@@ -128,7 +136,13 @@ export function ForgotPasswordForm({
     setIsLoading(true);
 
     try {
-      await verifyOtp(email, otpValue);
+      const result = await verifyOtp(email, otpValue);
+      
+      // Store the session token returned by the server
+      if (result && result.token) {
+        localStorage.setItem("resetSessionToken", result.token);
+      }
+
       setStep("success");
       setTimeout(() => {
         router.push("/reset-password");
@@ -139,7 +153,7 @@ export function ForgotPasswordForm({
         text: e?.message || "Invalid OTP. Please try again.",
         icon: "error",
       });
-      setOtp(["", "", "", "", "", ""]);
+      setOtp(["", "", "", ""]);
       otpRefs.current[0]?.focus();
     } finally {
       setIsLoading(false);
@@ -154,7 +168,7 @@ export function ForgotPasswordForm({
     try {
       await sendOtp(email);
       setResendCooldown(60);
-      setOtp(["", "", "", "", "", ""]);
+      setOtp(["", "", "", ""]);
       otpRefs.current[0]?.focus();
       swal({
         title: "Success",
@@ -176,7 +190,7 @@ export function ForgotPasswordForm({
 
   const handleBackToEmail = () => {
     setStep("email");
-    setOtp(["", "", "", "", "", ""]);
+    setOtp(["", "", "", ""]);
     setResendCooldown(0);
   };
 
@@ -200,7 +214,7 @@ export function ForgotPasswordForm({
             >
               <_Builtin.Block
                 className={_utils.cx(_styles, "sign_heading")}
-                style={{ whiteSpace: 'nowrap' }}
+                style={{ whiteSpace: "nowrap" }}
                 tag="div"
               >
                 {text1}
@@ -220,8 +234,10 @@ export function ForgotPasswordForm({
                 tag="div"
               >
                 {step === "email" && text2}
-                {step === "otp" && `We've sent a 6-digit code to ${email}. Enter it below to verify your identity.`}
-                {step === "success" && "Verification successful! Redirecting to reset your password..."}
+                {step === "otp" &&
+                  `We've sent a 4-digit code to ${email}. Enter it below to verify your identity.`}
+                {step === "success" &&
+                  "Verification successful! Redirecting to reset your password..."}
               </_Builtin.Block>
             </_Builtin.Block>
             <_Builtin.Link
@@ -315,9 +331,9 @@ export function ForgotPasswordForm({
                     />
                   </_Builtin.Block>
                   <button
-                    id='forgot-submit-btn'
+                    id="forgot-submit-btn"
                     type="submit"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     onClick={(ev) => {
                       ev.preventDefault();
                       handleEmailSubmit();
@@ -325,10 +341,13 @@ export function ForgotPasswordForm({
                   ></button>
                   <div
                     className={_utils.cx(_styles, "forgot_button")}
-                    style={{ opacity: isLoading ? 0.7 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
+                    style={{
+                      opacity: isLoading ? 0.7 : 1,
+                      cursor: isLoading ? "not-allowed" : "pointer",
+                    }}
                     onClick={() => {
                       if (!isLoading) {
-                        document.getElementById('forgot-submit-btn').click();
+                        document.getElementById("forgot-submit-btn").click();
                       }
                     }}
                   >
@@ -361,7 +380,12 @@ export function ForgotPasswordForm({
                   <_Builtin.Block
                     className={_utils.cx(_styles, "otp-input-container")}
                     tag="div"
-                    style={{ display: "flex", justifyContent: "center", gap: "10px", margin: "20px 0" }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: "10px",
+                      margin: "20px 0",
+                    }}
                   >
                     {otp.map((digit, index) => (
                       <_Builtin.FormTextInput
@@ -413,9 +437,9 @@ export function ForgotPasswordForm({
                     </button>
                   </_Builtin.Block>
                   <button
-                    id='otp-submit-btn'
+                    id="otp-submit-btn"
                     type="submit"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     onClick={(ev) => {
                       ev.preventDefault();
                       handleOtpSubmit();
@@ -423,10 +447,13 @@ export function ForgotPasswordForm({
                   ></button>
                   <div
                     className={_utils.cx(_styles, "forgot_button")}
-                    style={{ opacity: isLoading ? 0.7 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
+                    style={{
+                      opacity: isLoading ? 0.7 : 1,
+                      cursor: isLoading ? "not-allowed" : "pointer",
+                    }}
                     onClick={() => {
                       if (!isLoading) {
-                        document.getElementById('otp-submit-btn').click();
+                        document.getElementById("otp-submit-btn").click();
                       }
                     }}
                   >
@@ -479,7 +506,9 @@ export function ForgotPasswordForm({
                   className={_utils.cx(_styles, "forgot_success-text")}
                   tag="div"
                 >
-                  {"Your identity has been verified. Redirecting to set a new password..."}
+                  {
+                    "Your identity has been verified. Redirecting to set a new password..."
+                  }
                 </_Builtin.Block>
               </_Builtin.Block>
             )}

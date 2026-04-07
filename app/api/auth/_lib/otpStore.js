@@ -5,7 +5,7 @@ const sessionStore = new Map();
 const SESSION_EXPIRY_MS = 30 * 60 * 1000;
 
 export function generateOtp() {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+  return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
 export function generateSessionToken(email) {

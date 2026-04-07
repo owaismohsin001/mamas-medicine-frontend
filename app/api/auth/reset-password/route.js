@@ -1,21 +1,5 @@
 import { consumeSessionToken } from "../_lib/otpStore";
 
-const XANO_BASE = "https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/";
-
-/**
- * POST /api/auth/reset-password
- * Body: { token: string, newPassword: string }
- *
- * 1. Validates and consumes the OTP session token.
- * 2. Extracts the verified email from the session.
- * 3. Calls the Xano endpoint with { email, newPassword } to update the password.
- *
- * NOTE: Xano's built-in `auth/reset_password` expects a token it issued
- * during its own forgot-password flow. Since we use our own OTP flow,
- * ensure your Xano backend has a custom endpoint that accepts
- * { email, newPassword } to update a user's password directly.
- * Adjust the endpoint and payload below to match your Xano setup.
- */
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -45,11 +29,8 @@ export async function POST(req) {
       );
     }
 
-    // ── Forward to Xano ─────────────────────────────────────────
-    // Send the verified email + new password to Xano.
-    // If your Xano backend uses a different endpoint or payload,
-    // update the URL and body below accordingly.
-    const xanoRes = await fetch(`${XANO_BASE}auth/reset_password`, {
+    // Forward to Xano using the new update_password endpoint
+    const xanoRes = await fetch("https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/update_password", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: session.email, newPassword }),
