@@ -78,18 +78,11 @@ export function OnboardingNames({
                     autoFocus={false}
                     id="parent_name"
                   />
-                  <_Builtin.FormBlockLabel
-                    className={_utils.cx(_styles, "names_child-heading")}
-                    htmlFor="parent_pronoun_he"
-                    id="parent_pronouns_label"
-                  >
-                    {"Your Pronoun"}
-                  </_Builtin.FormBlockLabel>
                   <_Builtin.Block
                     className={_utils.cx(_styles, "pronoun_group")}
                     tag="div"
                     role="radiogroup"
-                    aria-labelledby="parent_pronouns_label"
+                    aria-label="Parent pronouns"
                   >
                     <_Builtin.Block
                       className={_utils.cx(_styles, "pronoun_option")}
@@ -106,7 +99,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="parent_pronoun_he"
                       >
-                        {"He"}
+                        {"he"}
                       </label>
                     </_Builtin.Block>
                     <_Builtin.Block
@@ -124,7 +117,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="parent_pronoun_she"
                       >
-                        {"She"}
+                        {"she"}
                       </label>
                     </_Builtin.Block>
                     <_Builtin.Block
@@ -142,7 +135,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="parent_pronoun_they"
                       >
-                        {"They"}
+                        {"they"}
                       </label>
                     </_Builtin.Block>
                   </_Builtin.Block>
@@ -164,18 +157,11 @@ export function OnboardingNames({
                     autoFocus={false}
                     id="child_name"
                   />
-                  <_Builtin.FormBlockLabel
-                    className={_utils.cx(_styles, "names_child-heading")}
-                    htmlFor="child_pronoun_he"
-                    id="child_pronouns_label"
-                  >
-                    {"Child Pronoun"}
-                  </_Builtin.FormBlockLabel>
                   <_Builtin.Block
                     className={_utils.cx(_styles, "pronoun_group")}
                     tag="div"
                     role="radiogroup"
-                    aria-labelledby="child_pronouns_label"
+                    aria-label="Child pronouns"
                   >
                     <_Builtin.Block
                       className={_utils.cx(_styles, "pronoun_option")}
@@ -192,7 +178,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="child_pronoun_he"
                       >
-                        {"He"}
+                        {"he"}
                       </label>
                     </_Builtin.Block>
                     <_Builtin.Block
@@ -210,7 +196,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="child_pronoun_she"
                       >
-                        {"She"}
+                        {"she"}
                       </label>
                     </_Builtin.Block>
                     <_Builtin.Block
@@ -228,7 +214,7 @@ export function OnboardingNames({
                         className={_utils.cx(_styles, "pronoun_label")}
                         htmlFor="child_pronoun_they"
                       >
-                        {"They"}
+                        {"they"}
                       </label>
                     </_Builtin.Block>
                   </_Builtin.Block>

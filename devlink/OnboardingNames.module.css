@@ -1015,21 +1015,33 @@
 }
 
 .pronoun_option {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0;
 }
 
 .pronoun_radio {
-  width: 1rem;
-  height: 1rem;
-  margin: 0;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .pronoun_label {
+  display: inline-flex;
+  min-width: 3.4rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
   font-family: Quicksand;
   color: #333;
-  font-size: var(--onboarding-form-font-size);
+  font-size: 1rem;
   line-height: 1.2;
   margin-bottom: 0px !important;
 }
@@ -1068,4 +1080,127 @@
   .pronoun_label {
     font-size: var(--onboarding-form-font-size);
   }
+}
+
+@media screen and (max-width: 991px) {
+  .names_form-wrapper {
+    width: 100%;
+    padding: 1.25rem 2rem 1.75rem;
+    box-sizing: border-box;
+  }
+
+  .form-block {
+    width: 100%;
+  }
+
+  .names_form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .first_mame-fild,
+  .drop_dowm,
+  .text-field-2 {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .names_form-wrapper {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .names_child-heading {
+    font-size: 1.75rem;
+  }
+
+  .first_mame-fild,
+  .drop_dowm,
+  .text-field-2 {
+    height: auto;
+    min-height: 3.25rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .onbording_names-navigation {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .btn-onboarding.onbord {
+    width: 100%;
+  }
+
+  .pronoun_group {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pronoun_label {
+    min-width: 0;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .names_form-wrapper {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .names_child-heading {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .first_mame-fild,
+  .drop_dowm,
+  .text-field-2 {
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .paragraph.text-color-primary.max-widht10 {
+    max-width: 100%;
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+
+  .onbording_names-navigation {
+    align-items: center;
+  }
+
+  .btn-onboarding {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .btn-onboarding.onbord {
+    min-height: 4rem;
+  }
+
+  .pronoun_group {
+    justify-content: start;
+  }
+}
+
+.pronoun_radio:focus-visible + .pronoun_label {
+  outline: 2px solid rgba(46, 92, 78, 0.35);
+  outline-offset: 2px;
+}
+
+.pronoun_radio:checked + .pronoun_label {
+  border-color: rgba(46, 92, 78, 0.45);
+  background-color: rgba(46, 92, 78, 0.1);
+  color: #2e5c4e;
+}
+
+.pronoun_label:hover {
+  background-color: rgba(250, 250, 248, 1);
 }

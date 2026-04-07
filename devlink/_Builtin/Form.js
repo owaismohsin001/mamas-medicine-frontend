@@ -15,8 +15,10 @@ export const FormWrapper = React.forwardRef(function FormWrapper(
   ref
 ) {
   const [state, setState] = React.useState(initialState);
+  const childrenArray = React.Children.toArray(children);
   const formName =
-    (children.find((c) => c.type === FormForm)?.props)["data-name"] ?? "Form";
+    (childrenArray.find((c) => c.type === FormForm)?.props)["data-name"] ??
+    "Form";
   return React.createElement(
     "div",
     {
