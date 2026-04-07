@@ -53,7 +53,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
                 height="auto"
                 loading="eager"
                 alt="Soul Sighted logo"
-                src="https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/69b9355119877eff4553c6d8_Soul%20Sighted%20(6).png"
+                src="https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/69c3574a5d3c4ba5242f542b_Soul%20Sighted%20Web%20Logo%20(2).png"
               />
             </_Builtin.NavbarBrand>
             <_Builtin.NavbarMenu

@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { NavbarOnboarding } from "../devlinkModified/NavbarOnboarding";
 import { LoginFormContent } from "../devlinkModified/SigninForm";
+import { DashboardFooter } from "../devlinkModified/DashboardFooter";
 import "./styles.css";
 import "./swal.css";
-
 
 const App = () => {
   useEffect(() => {
@@ -15,6 +15,7 @@ const App = () => {
     <div>
       <NavbarOnboarding/>
       <LoginFormContent/>
+      <DashboardFooter />
     </div>
   </div>
 };

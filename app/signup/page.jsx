@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { NavbarOnboarding } from "../../devlinkModified/NavbarOnboarding";
 import { SignupForm } from "../../devlinkModified/SignupForm";
+import { DashboardFooter } from "../../devlinkModified/DashboardFooter";
 import "../swal.css";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
     <div>
       <NavbarOnboarding/>
       <SignupForm email={email} />
+      <DashboardFooter/>
     </div>
   </div>
 };
