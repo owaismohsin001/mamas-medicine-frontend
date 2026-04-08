@@ -191,15 +191,15 @@ export async function POST(req) {
       return Response.json({ error: "Email is required" }, { status: 400 });
     }
 
-    const safeChildName = (childName || "Child");
+    const ChildName = childName || "Child";
 
     const html = `${generateSoulReadingHTML({
       ...insight,
-      child_name: safeChildName,
-    })}`
+      child_name: ChildName,
+    })}`;
 
     // Configure the Nodemailer transporter for Gmail
-    console.log(html)
+    console.log(html);
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -212,7 +212,7 @@ export async function POST(req) {
     const mailOptions = {
       from: `"Mama's Medicine" <ramshamzamop@gmail.com>`,
       to: email,
-      subject: `🌟 Soul Snapshot for ${safeChildName} is Ready!`,
+      subject: `🌟 Soul Snapshot for ${ChildName} is Ready!`,
       html,
     };
 

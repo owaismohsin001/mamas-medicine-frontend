@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { request } from "../../devlinkModified/env";
-import "./purchase.css"
-import "../loader.css"
+import "./purchase.css";
+import "../loader.css";
 import "../swal.css";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 function PurchaseModal({ isOpen = true, redirectUrl, onPurchase }) {
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ function PurchaseModal({ isOpen = true, redirectUrl, onPurchase }) {
 
   const handlePurchase = () => {
     if (!email) return alert("Enter email");
-    onPurchase?.({email});
+    onPurchase?.({ email });
   };
 
   return (
@@ -51,50 +51,54 @@ function PurchaseModal({ isOpen = true, redirectUrl, onPurchase }) {
 
 const App = () => {
   const [step, setStep] = useState(0);
-  const [results, setResults] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [results, setResults] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const onPurchase = async ({}) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const { url } = await request({
         method: "POST",
         endpoint: "create_checkout_session",
         headers: {
-          authorization: `Bearer ${localStorage.getItem("authToken")}`
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
         body: {
-          "success_url": "https://mamas-medicine-frontend.vercel.app/signup",
-          "cancel_url": "https://mamas-medicine-frontend.vercel.app?payment_failed",
-          "line_items": [
+          success_url: "https://mamas-medicine-frontend.vercel.app/signup",
+          cancel_url:
+            "https://mamas-medicine-frontend.vercel.app?payment_failed",
+          line_items: [
             {
-              "price": "price_1TEor2IAr4WiACOqhaJHzCr2",
-              "quantity": 1
-            }
-          ]
-        }
-      })
-      window.location.href = url
+              price: "price_1TJpsTBpexBWLlCZSca5AXtq",
+              quantity: 1,
+            },
+          ],
+        },
+      });
+      window.location.href = url;
     } catch (e) {
-      console.error("Purchase error", e)
+      console.error("Purchase error", e);
       swal({
         title: "Error",
         text: e?.message || "Something went wrong. Please try again.",
         icon: "error",
-      })
+      });
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    onPurchase({})
-  }, [])
+    onPurchase({});
+  }, []);
 
-  if (loading) return <div className="loader-container" style={{ height: '100vh' }}>
-    <div className="loader" />
-  </div>
+  if (loading)
+    return (
+      <div className="loader-container" style={{ height: "100vh" }}>
+        <div className="loader" />
+      </div>
+    );
 
-  return <></>
+  return <></>;
 };
 
 export default App;
