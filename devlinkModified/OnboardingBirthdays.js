@@ -44,6 +44,7 @@ export default function PlacesAutocomplete({ name }) {
         style={{ display: "none" }}
         value={resultPlaceId}
         name={name + "_place_id"}
+        readOnly={true}
       />
       <label htmlFor={name} className={_styles["text-block-5"]}>
         Select Place of birth

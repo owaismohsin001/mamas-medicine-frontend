@@ -30,11 +30,12 @@ export function OnboardingComplete({
   text1 = (
     <>
       {" Go and grab yourself a cuppa."}
-      <br /> {"."}
+      <br />
     </>
   ),
-  text2 = "Your insights will arrive in your inbox in less than 10 minutes",
-  image2 = "https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/6968ac26a420d9f418e3cfa9_Swatch-best.png",
+  text2 = "Your insights will arrive in your inbox in less than 10 minutes.",
+  image2 =
+  "https://cdn.prod.website-files.com/692ea98b8849e347f04bc413/6968ac26a420d9f418e3cfa9_Swatch-best.png",
 }) {
   return (
     <_Component

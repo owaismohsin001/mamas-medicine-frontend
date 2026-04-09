@@ -40,6 +40,7 @@ function PlacesAutocomplete({ name, form, setForm }) {
         style={{ display: "none" }}
         value={resultPlaceId}
         name={name + "_place_id"}
+        readOnly={true}
       />
       <input
         value={query}
