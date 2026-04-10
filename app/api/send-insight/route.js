@@ -217,13 +217,22 @@ function generateSoulReadingHTML(insight = {}) {
   };
 }
 
-function fixUnicode(str = "") {
+function cleanForJSON(str = "") {
   return str
     .normalize("NFC")
-    .replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/g, "")
-    .replace(/(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, "");
-}
 
+    // Fix broken unicode (CRITICAL)
+    .replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/g, "")
+    .replace(/(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, "")
+
+    // Normalize problematic characters
+    .replace(/[\u2010-\u2015]/g, "-") // all fancy dashes → normal dash
+    .replace(/[\u2018\u2019]/g, "'") // smart quotes → normal
+    .replace(/[\u201C\u201D]/g, '"') // smart double quotes → normal
+
+    // Optional: remove invisible troublemakers
+    .replace(/[\u200B-\u200D\uFEFF]/g, "") // zero-width chars
+}
 // --- Email scheduling ---
 
 async function scheduleEmail(email, subject, body, delayMs) {
@@ -234,7 +243,7 @@ async function scheduleEmail(email, subject, body, delayMs) {
       body: JSON.stringify({
         email,
         subject,
-        body: fixUnicode(body),
+        body: cleanForJSON(body),
         scheduled_time: Date.now() + delayMs,
       }),
     });
