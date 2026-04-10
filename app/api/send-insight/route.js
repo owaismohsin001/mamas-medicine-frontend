@@ -217,6 +217,13 @@ function generateSoulReadingHTML(insight = {}) {
   };
 }
 
+function fixUnicode(str = "") {
+  return str
+    .normalize("NFC")
+    .replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/g, "")
+    .replace(/(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, "");
+}
+
 // --- Email scheduling ---
 
 async function scheduleEmail(email, subject, body, delayMs) {
@@ -227,7 +234,7 @@ async function scheduleEmail(email, subject, body, delayMs) {
       body: JSON.stringify({
         email,
         subject,
-        body,
+        body: fixUnicode(body),
         scheduled_time: Date.now() + delayMs,
       }),
     });
