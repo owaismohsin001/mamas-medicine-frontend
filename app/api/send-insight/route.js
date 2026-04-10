@@ -127,6 +127,7 @@ function generateSoulReadingHTML(insight = {}) {
   const summaryContent = insight?.summary_text || "";
   const deepContent = insight?.deep_text || "";
   const childName = insight?.insights_api_payload?.childName || "";
+  const parentName = insight?.insights_api_payload?.parentName || "";
 
   const deepBlocks = preprocess(deepContent)
     .split("\n\n")
@@ -210,6 +211,7 @@ function generateSoulReadingHTML(insight = {}) {
 
   return {
     childName,
+    parentName,
     deep: getDeepEmail(deepHTML),
     summary: getSummary(childName, summaryHTML),
   };
@@ -239,15 +241,15 @@ async function scheduleEmail(email, subject, body, delayMs) {
   }
 }
 
-function buildEmailSequence(childName, deepHTML, summaryHTML) {
+function buildEmailSequence({ childName, parentName, deepHTML, summaryHTML }) {
   let cumulative = SCHEDULE_DELAY_MS;
 
   const steps = [
     { subject: "Deep summary", body: deepHTML, delay: SCHEDULE_DELAY_MS },
-    { subject: "Tell me what you thought", body: getTestimonalInvite(childName), delay: FOLLOW_UP_DELAY_MS },
+    { subject: "Tell me what you thought", body: getTestimonalInvite(childName, parentName), delay: FOLLOW_UP_DELAY_MS },
     { subject: "Summary", body: summaryHTML, delay: TESTIMONIAL_INVITE_DELAY_MS },
-    { subject: "There Is Depth Here. Let Me Show You.", body: getHowItWorks(), delay: HOW_IT_WORKS_DELAY_MS },
-    { subject: "Stay with this.", body: getCLosing(), delay: CLOSING_DELAY_MS },
+    { subject: "There Is Depth Here. Let Me Show You.", body: getHowItWorks(parentName), delay: HOW_IT_WORKS_DELAY_MS },
+    { subject: "Stay with this.", body: getCLosing(parentName), delay: CLOSING_DELAY_MS },
   ];
 
   return steps.map((step) => {
@@ -282,8 +284,8 @@ export async function POST(req) {
       html: getFirstEmail(),
     });
 
-    const { childName, deep, summary } = generateSoulReadingHTML(insight);
-    const sequence = buildEmailSequence(childName, deep, summary);
+    const { childName, parentName, deep, summary } = generateSoulReadingHTML(insight);
+    const sequence = buildEmailSequence({ childName, parentName, deepHTML: deep, summaryHTML: summary });
 
     await Promise.all(
       sequence.map((step) =>

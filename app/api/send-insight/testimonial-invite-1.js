@@ -1,4 +1,4 @@
-export const getTestimonalInvite = (child_first_name) => `
+export const getTestimonalInvite = (child_first_name, parentName) => `
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
     xmlns:v="urn:schemas-microsoft-com:vml">
 
@@ -707,8 +707,7 @@ export const getTestimonalInvite = (child_first_name) => `
                                                                                                                             <span
                                                                                                                                 class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none"
                                                                                                                                 style="color: rgba(0,0,0,var(--o42jjq,1)); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight: 400; font-style: normal;">Hi
-                                                                                                                                {First
-                                                                                                                                Name},</span>
+                                                                                                                                ${parentName},</span>
                                                                                                                         </div>
                                                                                                                         <div
                                                                                                                             style="line-height: 33px; font-family: YAFdJpYtCxE_1, _fb_, auto; color: rgba(0,0,0,var(--o42jjq,1));">
