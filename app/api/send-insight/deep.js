@@ -12,7 +12,7 @@ export default function deepFormat(html) {
     ">
   <!-- Header Image -->
   <img
-    src="https://mamas-medicine-frontend.vercel.app/email-deep-header.png""
+    src="https://mamas-medicine-frontend.vercel.app/email-deep-header.png"
       alt=""
       width=" 100%" style="max-width: 100%; height: auto; display: block" />
 
