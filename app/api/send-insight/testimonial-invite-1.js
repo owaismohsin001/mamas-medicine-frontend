@@ -1,4 +1,4 @@
-export const getTestimonalInvite = () => `
+export const getTestimonalInvite = (child_first_name) => `
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
     xmlns:v="urn:schemas-microsoft-com:vml">
 
@@ -614,7 +614,7 @@ export const getTestimonalInvite = () => `
                                                                                                                                 on
                                                                                                                                 You
                                                                                                                                 and
-                                                                                                                                {child_first_name}.</span>
+                                                                                                                                ${child_first_name}.</span>
                                                                                                                         </h1>
                                                                                                                     </div>
                                                                                                                 </td>
@@ -724,9 +724,7 @@ export const getTestimonalInvite = () => `
                                                                                                                                 this
                                                                                                                                 personal
                                                                                                                                 about
-                                                                                                                                {{child's
-                                                                                                                                first
-                                                                                                                                name}}
+                                                                                                                                ${child_first_name}
                                                                                                                                 can
                                                                                                                                 feel
                                                                                                                                 surprisingly
