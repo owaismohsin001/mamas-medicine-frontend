@@ -111,189 +111,86 @@ const App = () => {
   const [step, setStep] = useState(0);
   const [results, setResults] = useState({});
 
-  // request({
-  //         method: "POST",
-  //         endpoint: "submit_onboarding",
-  //         headers: {
-  //             'Authorization': `Bearer ${localStorage.getItem("authToken")}`,
-  //         },
-  //         body: payload
-  //     })
+  const sendInsightAndEmail = async () => {
+    try {
+      const token = localStorage.getItem("authToken");
+      const mapped = mapToOnboardingPayload(results);
+      let child_id = window.location.href.split("?child_id=")[1];
 
-  // const f = async () => {
-  //   if (step == 10) {
-  //     try {
-  //       const token = localStorage.getItem("authToken");
-  //       const mapped = mapToOnboardingPayload(results);
-  //       let child_id = window.location.href.split("?child_id=")[1];
-
-  //       if (!child_id) {
-  //         const data = await request({
-  //           method: "POST",
-  //           endpoint: "add_children",
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //           body: {
-  //             name: mapped.childname,
-  //             dob: mapped.child_dob,
-  //             place_of_birth: results["child"],
-  //             place_of_birth_id: mapped.child_birth_place_id,
-  //             pronouns: mapped.childPronouns,
-  //           },
-  //         });
-  //         child_id = data?.child_id;
-  //       }
-
-  //       const payload = {
-  //         child_id,
-  //         journey_id: "fff90478-924f-4ec7-95a1-68b5549a0ec9",
-  //         onboarding_payload: mapped,
-  //       };
-
-  //       console.log("final_payload", payload);
-  //       const { status } = await request({
-  //         method: "POST",
-  //         endpoint: "submit_onboarding",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: payload,
-  //       });
-  //       if (status == "ready") {
-  //         // Trigger email insight
-  //         try {
-  //           const userStr = localStorage.getItem("user");
-  //           let email = localStorage.getItem("email"); // check for direct 'email' key
-
-  //           if (userStr) {
-  //             const user = JSON.parse(userStr);
-  //             if (!email && user.email) email = user.email; // fallback to user.email
-  //           }
-
-  //           if (email) {
-  //             await fetch("/api/send-insight", {
-  //               method: "POST",
-  //               headers: { "Content-Type": "application/json" },
-  //               body: JSON.stringify({
-  //                 email: email,
-  //                 childName: mapped.childname,
-  //                 insights:
-  //                   "Your personalized insight is ready! Visit your dashboard to view the full details of your journey with " +
-  //                   mapped.childname +
-  //                   ".",
-  //               }),
-  //             });
-  //           }
-  //         } catch (emailErr) {
-  //           console.error("Failed to send email insight:", emailErr);
-  //         }
-
-  //         swal({
-  //           title: "Success",
-  //           text: "Your insight is ready and has been sent to your email!",
-  //           icon: "success",
-  //         }).then(() => (window.location.href = "/dashboard"));
-  //       }
-  //     } catch (e) {
-  //       swal({
-  //         title: "Error",
-  //         text: err?.message,
-  //         icon: "error",
-  //       });
-  //     }
-  //   }
-  // };
-  useEffect(() => {
-    if (step !== 10) return;
-
-    const sendInsightAndEmail = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
-        const mapped = mapToOnboardingPayload(results);
-        let child_id = window.location.href.split("?child_id=")[1];
-
-        if (!child_id) {
-          const data = await request({
-            method: "POST",
-            endpoint: "add_children",
-            headers: { Authorization: `Bearer ${token}` },
-            body: {
-              name: mapped.childname,
-              dob: mapped.child_dob,
-              place_of_birth: results["child"],
-              place_of_birth_id: mapped.child_birth_place_id,
-              pronouns: mapped.childPronouns,
-            },
-          });
-          child_id = data?.child_id;
-        }
-
-        const payload = {
-          child_id,
-          journey_id: "fff90478-924f-4ec7-95a1-68b5549a0ec9",
-          onboarding_payload: mapped,
-        };
-
-        const response = await request({
+      if (!child_id) {
+        const data = await request({
           method: "POST",
-          endpoint: "submit_onboarding",
+          endpoint: "add_children",
           headers: { Authorization: `Bearer ${token}` },
-          body: payload,
+          body: {
+            name: mapped.childname,
+            dob: mapped.child_dob,
+            place_of_birth: results["child"],
+            place_of_birth_id: mapped.child_birth_place_id,
+            pronouns: mapped.childPronouns,
+          },
         });
+        child_id = data?.child_id;
+      }
 
-        // ✅ Extract both status AND the actual insight from the response
-        const { status, insight, summary } = response;
+      const payload = {
+        child_id,
+        journey_id: "fff90478-924f-4ec7-95a1-68b5549a0ec9",
+        onboarding_payload: mapped,
+      };
 
-        if (status == "ready") {
-          try {
-            const userStr = localStorage.getItem("user");
-            let email = localStorage.getItem("email");
+      const response = await request({
+        method: "POST",
+        endpoint: "submit_onboarding",
+        headers: { Authorization: `Bearer ${token}` },
+        body: payload,
+      });
 
-            if (!email && userStr) {
-              const user = JSON.parse(userStr);
-              email = user?.email || "";
-            }
+      // ✅ Extract both status AND the actual insight from the response
+      const { status, insight, summary } = response;
 
-            if (email) {
-              const emailRes = await fetch("/api/send-insight", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email }),
-              });
+      if (status == "ready") {
+        try {
+          const userStr = localStorage.getItem("user");
+          let email = localStorage.getItem("email");
 
-              if (!emailRes.ok) {
-                const errorData = await emailRes.json().catch(() => ({}));
-                throw new Error(
-                  errorData?.error || "Failed to send first email"
-                );
-              }
-            }
-          } catch (emailErr) {
-            console.error("Failed to send first email:", emailErr);
+          if (!email && userStr) {
+            const user = JSON.parse(userStr);
+            email = user?.email || "";
           }
 
-          swal({
-            title: "Success",
-            text: "Your insight is ready and has been sent to your email!",
-            icon: "success",
-            className: "custom-swal-success", // This "wraps" the modal in your class
-          }).then(() => (window.location.href = "/dashboard"));
+          if (email) {
+          }
+        } catch (emailErr) {
+          console.error("Failed to send first email:", emailErr);
         }
-      } catch (e) {
+
         swal({
-          title: "Error",
-          text: e?.message,
-          icon: "error",
-          className: "custom-swal-error", // This "wraps" the modal in your class
-        });
+          title: "Success",
+          text: "Your insight is ready and has been sent to your email!",
+          icon: "success",
+          className: "custom-swal-success", // This "wraps" the modal in your class
+        }).then(() => (window.location.href = "/dashboard"));
       }
-    };
+    } catch (e) {
+      swal({
+        title: "Error",
+        text: e?.message,
+        icon: "error",
+        className: "custom-swal-error", // This "wraps" the modal in your class
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (step !== 10) return;
 
     sendInsightAndEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, results]);
   // f()
+    // sendInsightAndEmail();
+
 
   useEffect(() => {
     setTimeout(() => {
