@@ -12,7 +12,7 @@ export default function deepFormat(html) {
     ">
   <!-- Header Image -->
   <img
-    src="/email-deep-header.png""
+    src="https://mamas-medicine-frontend.vercel.app/email-deep-header.png""
       alt=""
       width=" 100%" style="max-width: 100%; height: auto; display: block" />
 
@@ -29,7 +29,7 @@ export default function deepFormat(html) {
 
     <!-- Image -->
     <img
-      src="/email-deep-body.png" width=" 100%" style="max-width: 100%; height: auto; display: block; margin: 20px 0" />
+      src="https://mamas-medicine-frontend.vercel.app/email-deep-body.png" width=" 100%" style="max-width: 100%; height: auto; display: block; margin: 20px 0" />
 
     <!-- Footer Section -->
     <div style="margin-top: 30px">
@@ -38,7 +38,7 @@ export default function deepFormat(html) {
       <p>Warmly,</p>
 
       <img
-        src="/email-logo.png"
+        src="https://mamas-medicine-frontend.vercel.app/email-logo.png"
         alt="" width="160" style="display: block; margin: 10px 0" />
 
       <p>Founder, Mama’s Medicine</p>

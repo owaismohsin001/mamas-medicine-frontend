@@ -13,7 +13,7 @@ export default function summaryFormat(html) {
     ">
   <!-- Header Image -->
   <img
-    src="/email-summary-header.png" "
+    src="https://mamas-medicine-frontend.vercel.app/email-summary-header.png" "
       alt=""
       width=" 100%" style="width: 100%; max-width: 100%; height: auto; display: block" />
 
@@ -30,7 +30,7 @@ export default function summaryFormat(html) {
 
     <!-- Image -->
     <img
-      src="/email-summary-body.png" "
+      src="https://mamas-medicine-frontend.vercel.app/email-summary-body.png" "
       alt="" style=" width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0; " />
 
     <!-- Footer Section -->
@@ -40,7 +40,7 @@ export default function summaryFormat(html) {
     <p>Warmly,</p>
 
     <img
-      src="/email-logo.png"
+      src="https://mamas-medicine-frontend.vercel.app/email-logo.png"
       alt="" style="width: 160px; height: auto; margin: 10px 0" />
 
     <p>Founder, Mama’s Medicine</p>
