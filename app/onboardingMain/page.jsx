@@ -246,6 +246,33 @@ const App = () => {
         const { status, insight, summary } = response;
 
         if (status == "ready") {
+          try {
+            const userStr = localStorage.getItem("user");
+            let email = localStorage.getItem("email");
+
+            if (!email && userStr) {
+              const user = JSON.parse(userStr);
+              email = user?.email || "";
+            }
+
+            if (email) {
+              const emailRes = await fetch("/api/send-insight", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+              });
+
+              if (!emailRes.ok) {
+                const errorData = await emailRes.json().catch(() => ({}));
+                throw new Error(
+                  errorData?.error || "Failed to send first email"
+                );
+              }
+            }
+          } catch (emailErr) {
+            console.error("Failed to send first email:", emailErr);
+          }
+
           swal({
             title: "Success",
             text: "Your insight is ready and has been sent to your email!",
