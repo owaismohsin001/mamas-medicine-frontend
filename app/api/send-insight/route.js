@@ -11,7 +11,7 @@ const MAIL_PASS = process.env.MAIL_PASS || "denl xlhu orci ydcm";
 const SCHEDULED_EMAIL_ENDPOINT =
   "https://xnrw-fohw-scw8.a2.xano.io/api:uUEiFEze/scheduled_email";
 
-const SCHEDULE_DELAY_MS = 5 * 60 * 1000;
+const SCHEDULE_DELAY_MS = 2 * 60 * 1000;
 const FOLLOW_UP_DELAY_MS = 6 * 60 * 60 * 1000;
 const TESTIMONIAL_INVITE_DELAY_MS = 24 * 60 * 60 * 1000;
 const HOW_IT_WORKS_DELAY_MS = 24 * 60 * 60 * 1000;
