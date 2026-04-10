@@ -30,7 +30,7 @@ export default function summaryFormat(html) {
 
     <!-- Image -->
     <img
-      src="https://mamas-medicine-frontend.vercel.app/email-summary-body.png" "
+      src="https://mamas-medicine-frontend.vercel.app/email-summary-body.png"
       alt="" style=" width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0; " />
 
     <!-- Footer Section -->
