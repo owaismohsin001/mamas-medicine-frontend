@@ -43,7 +43,7 @@ export function NavbarOnboarding({ as: _Component = _Builtin.NavbarWrapper }) {
               className={_utils.cx(_styles, "brand")}
               aria-label="Soul Sighted — home page"
               options={{
-                href: "https://mamasmedicine.webflow.io/",
+                href: "https://soul-sighted.com/",
                 preload: "none",
               }}
             >

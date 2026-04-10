@@ -81,7 +81,7 @@ export function Footer({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block="inline"
                 options={{
-                  href: "https://mamasmedicine.webflow.io/parent-child-relationship",
+                  href: "https://soul-sighted.com/parent-child-relationship",
                 }}
               >
                 <_Builtin.Block
@@ -112,7 +112,7 @@ export function Footer({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "https://mamasmedicine.webflow.io/contact",
+                  href: "https://soul-sighted.com/contact",
                 }}
               >
                 {"Contact Us"}
@@ -168,7 +168,7 @@ export function Footer({ as: _Component = _Builtin.Block }) {
                 button={false}
                 block=""
                 options={{
-                  href: "https://mamasmedicine.webflow.io/faqs",
+                  href: "https://soul-sighted.com/faqs",
                 }}
               >
                 {"FAQ's"}
